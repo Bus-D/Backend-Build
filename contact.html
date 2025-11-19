@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact / About</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+
+    <!-- Basic SEO -->
+  <meta name="description" content="Bus-D Designs — Freelance Graphic Design & UX/UI portfolio showcasing creative design, branding, and web projects.">
+  <meta name="keywords" content="graphic design, UX design, UI design, web design, freelance designer, portfolio">
+  <meta name="author" content="Brandon Garrett">
+
+  <!-- Open Graph (Facebook, LinkedIn, etc.) -->
+  <meta property="og:title" content="Bus-D Designs">
+  <meta property="og:description" content="Freelance Graphic & UX Design portfolio by Brandon Garrett.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourdomain.com/">
+  <meta property="og:image" content="https://yourdomain.com/images/preview.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bus-D Designs">
+  <meta name="twitter:description" content="Freelance Graphic & UX Design portfolio by Brandon Garrett.">
+  <meta name="twitter:image" content="https://yourdomain.com/images/preview.png">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/favicon/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/favicon/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/favicon/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/favicon/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="images/favicon/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/favicon/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="images/favicon/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/favicon/apple-touch-icon-152x152.png" />
+  <link rel="icon" type="image/png" href="images/favicon/favicon-196x196.png" sizes="196x196" />
+  <link rel="icon" type="image/png" href="images/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="images/favicon/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="images/favicon/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="images/favicon/favicon-128.png" sizes="128x128" />
+
+  <!-- Windows Tiles -->
+  <meta name="application-name" content="Bus-D Designs"/>
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+  <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+  <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+  <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+  <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+  <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+
+
+  <script type="module" src="script/main.js" defer></script>
+  <script src="script/form.js" defer></script>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17592758792"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17592758792');
+
+  gtag('event', 'conversion', {
+      'send_to': 'AW-17592758792/T6bICP7Y3LUbEIjk8MRB',
+      'value': 1.0,
+      'currency': 'USD'
+  });
+</script>
+
+<body>
+  <header>
+
+  </header>
+
+ <section class="contact-section">
+  <h1>Contact Me</h1>
+
+  <form 
+    name="contact"
+    method="POST"
+    data-netlify="true"
+    action="/thank-you.html"
+    class="contact-form"
+    id="contact-form"
+  >
+
+    <!-- Required for Netlify to detect the form -->
+    <input type="hidden" name="form-name" value="contact">
+
+    <!-- Netlify Honeypot Anti-Spam -->
+    <input type="hidden" name="bot-field">
+    <div hidden>
+      <label>Don’t fill this out: <input name="bot-field"></label>
+    </div>
+
+    <label>
+      Name
+      <input type="text" name="name" required>
+    </label>
+
+    <label>
+      Email
+      <input type="email" name="email" required>
+    </label>
+
+    <label>
+      Message
+      <textarea name="message" rows="5" placeholder="Tell me about your design request" required></textarea>
+    </label>
+
+    <button type="submit" class="btn">Send Message</button>
+  </form>
+
+  <p id="form-status" class="status"></p>
+</section>
+
+
+  <footer>
+
+  </footer>
+
+
+</body>
+</html>

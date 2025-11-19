@@ -1,0 +1,129 @@
+/* ---------- Hero ---------- */
+.hero {
+  max-width: 900px;
+  margin: 5rem auto 3rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero h2 {
+  font-size: 1.25rem;
+  color: var(--muted-text);
+}
+
+/* ---------- Cards / Blocks ---------- */
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+  padding: 2rem 5%;
+  text-align: center;
+}
+
+.home-grid section {
+  background: var(--surface);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.home-grid section:hover {
+  transform: translateY(-4px);
+}
+
+.home-grid img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+figcaption {
+  color: var(--muted-text);
+  font-size: 0.9rem;
+}
+
+/* ---------- Slideshow ---------- */
+.slideshow-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.mySlides {
+  display: none;
+}
+
+.mySlides img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  padding: 1rem;
+  margin-top: -22px;
+  color: white;
+  font-size: 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.next {
+  right: 0;
+}
+
+.prev:hover,
+.next:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.dots {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.dot {
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+  margin: 0 3px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.dot.active,
+.dot:hover {
+  background-color: var(--accent-color);
+}
+
+.numbertext {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  font-size: 0.8rem;
+  color: #fff;
+  background: rgba(0,0,0,0.5);
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+/* ---------- Responsive for Components ---------- */
+@media (max-width: 800px) {
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+}

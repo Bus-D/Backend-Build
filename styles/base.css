@@ -1,0 +1,43 @@
+/* ---------- Root Variables ---------- */
+:root {
+  --primary-color: #1e8f68;
+  --accent-color: #a9e5bb;
+  --text-color: #181818;
+  --light-gray: #bfc7c2;
+  --muted-text: #666;
+  --background: #fafafa;
+  --surface: #fff;
+  --border-color: #e5e5e5;
+
+  --heading-font: "Audiowide", sans-serif;
+  --body-font: "Inter", sans-serif;
+}
+
+/* ---------- Global Reset ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  background: var(--background);
+  color: var(--text-color);
+  line-height: 1.7;
+  padding-top: 60px;
+}
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+p {
+  font-size: 1.05rem;
+  color: var(--text-color);
+  margin-bottom: 1em;
+}

@@ -1,0 +1,31 @@
+/* ---------- Portfolio Grid ---------- */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  padding: 3rem 5%;
+}
+
+.portfolio-item {
+  background: var(--surface);
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-6px);
+}
+
+.portfolio-item img {
+  width: 100%;
+  display: block;
+}
+
+.portfolio-item h3 {
+  padding: 1rem;
+  font-family: var(--heading-font);
+  font-size: 1.4rem;
+  color: var(--primary-color);
+}

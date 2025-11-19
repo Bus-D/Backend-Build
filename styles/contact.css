@@ -1,0 +1,132 @@
+/* -----------------------------------------
+   Contact Form — Matching BusDDesigns Style
+------------------------------------------ */
+
+/* Wrapper */
+.contact-form-container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 4rem auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* Card */
+#contact-form {
+  width: 100%;
+  max-width: 480px;
+  background: var(--surface);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  border: 1px solid var(--border-color);
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Animation matches your site */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Heading */
+#contact-form h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+  font-family: var(--heading-font);
+}
+
+/* Labels */
+#contact-form label {
+  font-weight: 600;
+  color: var(--text-color);
+  margin-top: 1.2rem;
+  display: block;
+}
+
+/* Input fields */
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 0.9rem;
+  margin-top: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 1rem;
+  font-family: var(--body-font);
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Focus state — UX polished */
+#contact-form input:focus,
+#contact-form textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(30, 143, 104, 0.15); /* matches green */
+}
+
+/* Submit Button */
+#contact-form button {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  font-family: var(--body-font);
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover state */
+#contact-form button:hover {
+  background: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+/* Thank You Page Matching */
+.thankyou-section {
+  max-width: 600px;
+  margin: 6rem auto;
+  background: var(--surface);
+  padding: 3rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.thankyou-section h1 {
+  text-align: center;
+  color: var(--primary-color);
+  font-family: var(--heading-font);
+  margin-bottom: 1rem;
+}
+
+.thankyou-section p {
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+}
+
+.thankyou-section .btn {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  padding: 1rem;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.thankyou-section .btn:hover {
+  background: var(--accent-color);
+  transform: translateY(-2px);
+}
