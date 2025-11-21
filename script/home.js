@@ -19,7 +19,7 @@ function portfolioGridTemplate(data) {
       <img src="${data.image}" alt="${data.title}">
       <h3>${data.title}</h3>
     </a>
-    <p>${data.description}</p>
+    <p>${data.description}</p> 
   </div>`;
 }
 async function setPortfolioGrid() {
