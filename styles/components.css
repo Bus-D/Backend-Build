@@ -14,10 +14,17 @@
 .hero h2 {
   font-size: 1.25rem;
   color: var(--muted-text);
+  margin-bottom: 1rem;
 }
 
 .hero a {
-  text-decoration: none;;
+  text-decoration: none;
+  margin-top: 2rem;
+}
+
+/* ---------- Home Into Button ---------- */
+.home-intro > .order-button {
+  text-decoration: none;
 }
 
 /* ---------- Cards / Blocks ---------- */

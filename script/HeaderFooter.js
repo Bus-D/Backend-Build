@@ -18,7 +18,7 @@ export function loadHeader() {
     <nav class="nav-links">
       <a href="index.html">Home</a>
       <a href="contact.html">Contact</a>
-      <a href="packages.html">Services</a>
+      <a href="services.html">Services</a>
       <a href="contact.html" class="order-button">Get a Quote</a>
     </nav>
     
@@ -37,7 +37,17 @@ export function loadHeader() {
 
 export function loadFooter() {
   document.querySelector("footer").innerHTML = `
+  <section class="footer-content">
     <p>Bus-D Designs &copy;</p>
+
+    <div class="site-links">
+      <p>Site Links</p>
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+    </div>
+
     <div class="social-links">
       <p>Social Links</p>
       <a href="https://www.instagram.com/busd_designs?igsh=ZjA0YThzdXZ1Znlv&utm_source=qr">
@@ -48,7 +58,9 @@ export function loadFooter() {
       </a>
     </div>
     <div class="legal">
+    <p>Legal</p>
       <a href="legal/privacy.html">Privacy</a>
     </div>
+  </section>
   `;
 }

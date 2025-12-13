@@ -9,8 +9,9 @@
   --surface: #fff;
   --border-color: #e5e5e5;
 
-  --heading-font: "Audiowide", sans-serif;
-  --body-font: "Inter", sans-serif;
+--heading-font: "neue-haas-grotesk-display", "neue-haas-grotesk-text", Helvetica, Arial, sans-serif;
+--body-font: "neue-haas-grotesk-text", Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
 }
 
 /* ---------- Global Reset ---------- */
@@ -30,14 +31,43 @@ body {
 
 /* ---------- Typography ---------- */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--heading-font);
   color: var(--primary-color);
-  font-weight: 600;
-  margin-bottom: 0.5em;
 }
+
+h1,
+h2 {
+  font-family: "neue-haas-grotesk-display", "neue-haas-grotesk-text", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+h3 {
+  font-family: "neue-haas-grotesk-text", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+h4,
+h5,
+h6 {
+  font-family: "neue-haas-grotesk-text", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  line-height: 1.35;
+}
+
 
 p {
   font-size: 1.05rem;
   color: var(--text-color);
   margin-bottom: 1em;
+}
+
+@media (min-width: 900px) {
+  h1,
+  h2 {
+    letter-spacing: -0.025em;
+  }
 }

@@ -41,128 +41,71 @@
   <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
   <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
 
-  <title>About Bus-D Designs</title>
+  <title>About Brandon Garrett | Freelance UI/UX Designer at Bus-D Designs</title>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17592758792"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'AW-17592758792');
-</script>
+    gtag('config', 'AW-17592758792');
+  </script>
+
+  <link rel="stylesheet" href="styles/styles.css">
+  <script type="module" src="script/main.js" defer></script>
 </head>
 <body>
   <header></header>
 
-  <!-- <body>
-      <section class="hero">
-      <div class="slideshow-container">
-        <div class="mySlides">
-          <div class="numbertext">1 / 6</div>
-          <img src="images/portfolio/SlideShow/slideshow-1.jpg" alt="slideshow 1" />
-        </div>
-        <div class="mySlides">
-          <div class="numbertext">2 / 6</div>
-          <img src="images/portfolio/SlideShow/slideshow-2.jpg" alt="slideshow 2" />
-        </div>
-        <div class="mySlides">
-          <div class="numbertext">3 / 6</div>
-          <img src="images/portfolio/SlideShow/slideshow-3.jpg" alt="slideshow 3" />
-        </div>
-        <div class="mySlides">
-          <div class="numbertext">4 / 6</div>
-          <img src="images/portfolio/SlideShow/slideshow-4.jpg" alt="slideshow 4" />
-        </div>
-        <div class="mySlides">
-          <div class="numbertext">5 / 6</div>
-          <img src="images/portfolio/SlideShow/slideshow-5.jpg" alt="slideshow 5" />
-        </div>
-        <div class="mySlides">
-          <div class="numbertext">6 / 6</div>
-          <img src="images/portfolio/SlideShow/slideshow-6.jpg" alt="slideshow 6" />
-        </div>
+    <section class="hero">
+      <h1>About Bus-D Designs</h1>
+      <h2>Freelance UI/UX & Web Designer focused on clarity, usability, and thoughtful design</h2>
+    </section>
 
-        <a class="prev" onclick="plusSlides(-1)">❮</a>
-        <a class="next" onclick="plusSlides(1)">❯</a>
 
-        <div class="dots">
-          <span class="dot" onclick="currentSlide(1)"></span>
-          <span class="dot" onclick="currentSlide(2)"></span>
-          <span class="dot" onclick="currentSlide(3)"></span>
-          <span class="dot" onclick="currentSlide(4)"></span>
-          <span class="dot" onclick="currentSlide(5)"></span>
-          <span class="dot" onclick="currentSlide(6)"></span>
-        </div>
-      </div>
-
-      <h1>Welcome to Bus-D Designs</h1>
-      <h2>Your one stop shop for all things design and website related</h2>
-    </section> -->
-
-    <main class="contact-content">
+    <main class="about-content">
       <section class="about">
-        <h3>About</h3>
-        <p>
-          Hello! I’m Brandon Garrett, a college student studying graphic design and
-          coding. I’m building my freelancing career to gain experience while
-          funding my education. I hope you enjoy exploring my site and consider
-          working with me!
-        </p>
-
-        <!-- <figure>
-          <img src="images/typebooklet.jpg" alt="typographic booklet" />
-          <figcaption>
-            The cover of a booklet I designed based on a talk by President Dallin
-            H. Oaks. More pages appear in the slideshow above.
-          </figcaption>
-        </figure> -->
 
         <p>
-          My main emphasis is in User Interface and Experience (UI/UX), and this
-          entire site was coded and designed by me! I’m proud of what I’ve built
-          and always striving to improve.
+          Hi, I’m Brandon Garrett — a freelance UI/UX and web designer behind Bus-D Designs.
+          I specialize in designing clean, intuitive interfaces for websites, web apps,
+          and mobile apps, with a strong focus on usability and real-world user experience.
         </p>
+
+        <p>
+          I’m currently studying graphic design and web development, and I use my freelance
+          work as a way to gain hands-on experience while building products that solve real
+          problems. Every project is approached with a balance of visual design, structure,
+          and user-focused thinking.
+        </p>
+
+        <p>
+          My design process emphasizes clarity, consistency, and purpose. I focus on
+          understanding user needs, defining clear flows, and creating interface systems
+          that are easy to use and ready for development. I design primarily in Figma and
+          collaborate closely with clients to ensure each project meets both user and
+          business goals.
+        </p>
+
+        <p>
+          This website was fully designed and coded by me, and it continues to evolve as
+          I refine my skills in UI/UX design, accessibility, and front-end development.
+          I’m always looking to improve and take on projects that challenge me creatively
+          and technically.
+        </p>
+
+        <p>
+          If you’re looking for a freelance UI/UX designer who values thoughtful design,
+          clear communication, and practical solutions, I’d love to work with you.
+        </p>
+
       </section>
     </main>
+
   </body>
 
 
   <footer></footer>
-
-    <script>
-    let slideIndex = 1;
-
-    window.onload = function () {
-      showSlides(slideIndex);
-      setInterval(() => plusSlides(1), 8000);
-    };
-
-    function plusSlides(n) {
-      showSlides((slideIndex += n));
-    }
-
-    function currentSlide(n) {
-      showSlides((slideIndex = n));
-    }
-
-    function showSlides(n) {
-      const slides = document.getElementsByClassName("mySlides");
-      const dots = document.getElementsByClassName("dot");
-
-      if (n > slides.length) slideIndex = 1;
-      if (n < 1) slideIndex = slides.length;
-
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      for (let i = 0; i < dots.length; i++) {
-        dots[i].classList.remove("active");
-      }
-
-      slides[slideIndex - 1].style.display = "block";
-      dots[slideIndex - 1].classList.add("active");
-    }
-  </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact / About</title>
+  <title>Contact Bus-D Designs | Hire a Freelance UI/UX Designer</title>
   <link rel="stylesheet" href="styles/styles.css" />
 
     <!-- Basic SEO -->
@@ -72,66 +72,94 @@
 
   </header>
 
-  <section class="offer">
-    <h2>What I Offer</h2>
-    <p><strong>Logo & Branding</strong> — Professional brand identities and visuals</p>
-    <p><strong>Website UI Design</strong> — Clean, modern layouts for your website</p>
-    <p><strong>App UI Design</strong> — Mobile app interface design</p>
-    <p><strong>UX Reviews & Improvements</strong> — Usability audits and redesigns</p>
-    <p><strong>Custom Requests</strong> — If you need a design not listed here, just ask!</p>
+  <section class="hero">
+    <h1>Contact Bus-D Designs</h1>
+    <h2>Let’s talk about your project and see how I can help</h2>
   </section>
 
- <section class="contact-section">
-  <h1>Contact Me</h1>
+  <section class="contact-intro">
+    <p>
+      Have a project in mind or need help improving an existing design? I work with
+      startups, small businesses, and individuals to create clear, user-friendly
+      interfaces for websites, web apps, and mobile applications.
+    </p>
 
-  <form 
+    <p>
+      Use the form below to tell me a bit about your project, timeline, and goals.
+      I’ll review your message and get back to you as soon as possible.
+    </p>
+  </section>
+
+
+
+  <section class="offer">
+    <h2>What I Can Help With</h2>
+
+    <ul>
+      <li><strong>UI/UX Design</strong> — Interface design focused on usability and clarity</li>
+      <li><strong>Website UI Design</strong> — Clean, modern layouts for marketing and content sites</li>
+      <li><strong>Mobile App UI Design</strong> — Intuitive interfaces for iOS and Android apps</li>
+      <li><strong>UX Reviews & Improvements</strong> — Usability audits and redesign recommendations</li>
+      <li><strong>Design Systems</strong> — Consistent components and scalable UI kits</li>
+      <li><strong>Custom Requests</strong> — If you’re unsure what you need, we can figure it out together</li>
+    </ul>
+  </section>
+
+
+ <section id="contact-form">
+  <h2>Send a Message</h2>
+
+  <form
     name="contact"
     method="POST"
     action="/thank-you.html"
     data-netlify="true"
     class="contact-form"
   >
-
-    <!-- Required for Netlify to detect the form -->
     <input type="hidden" name="form-name" value="contact">
-
-    <!-- Netlify Honeypot Anti-Spam -->
     <input type="hidden" name="bot-field">
+
     <div hidden>
       <label>Don’t fill this out: <input name="bot-field"></label>
     </div>
 
     <label>
       Name
-      <input type="text" name="name" required>
+      <input type="text" name="name" placeholder="Your name" required>
     </label>
 
     <label>
       Email
-      <input type="email" name="email" required>
+      <input type="email" name="email" placeholder="your@email.com" required>
     </label>
 
-    <label for="design-type" required>What type of design are you looking for?</label>
-    <select id="design-type" name="design-type">
+    <label for="design-type">
+      What type of design do you need?
+    </label>
+    <select id="design-type" name="design-type" required>
       <option value="" selected disabled>Select a design type...</option>
       <option value="branding">Branding (logo, identity, style guides)</option>
       <option value="website-ui">Website UI Design</option>
-      <option value="app-ui">App UI Design</option>
-      <option value="ux">UX Improvements (usability testing, accessibility, UX overhaul)</option>
-      <option value="design">Design System Creation</option>
-      <option value="marketing">Marketing/Miscellanious Graphics</option>
+      <option value="app-ui">Mobile App UI Design</option>
+      <option value="ux">UX Review or Improvements</option>
+      <option value="design-system">Design System Creation</option>
+      <option value="marketing">Marketing or Miscellaneous Design</option>
     </select>
 
     <label>
-      Message
-      <textarea name="message" rows="5" placeholder="Tell me about your design request" required></textarea>
+      Project Details
+      <textarea
+        name="message"
+        rows="5"
+        placeholder="Tell me about your project, goals, timeline, or any questions you have"
+        required
+      ></textarea>
     </label>
 
     <button type="submit" class="btn">Send Message</button>
   </form>
-
-  <p id="form-status" class="status"></p>
 </section>
+
 
 
   <footer>
