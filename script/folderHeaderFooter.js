@@ -10,7 +10,7 @@ export function loadHeader() {
     <nav>
       <a href="../../index.html">Home</a>
       <a href="../../contact.html">Contact</a>
-      <a href="../../packages.html">Services</a>
+      <a href="../../services.html">Services</a>
       <a href="../../contact.html" class="order-button">Get a Quote</a>
     </nav>
   `;

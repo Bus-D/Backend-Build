@@ -43,7 +43,7 @@
   margin: 0 auto;
 }
 .portfolio-hero img {
-  height: 50%;
+  height: 40%;
   width: 50%;
   margin: 0 auto;
 }
@@ -52,6 +52,10 @@
   width: 90%;
   margin: 0 auto;
   margin-top: 2rem;
+}
+
+.takeaway {
+  margin-bottom: 2rem;
 }
 
 .design-imgs {
@@ -64,4 +68,5 @@
   width: 150px;
   height:fit-content;
   justify-self: center;
+  margin-bottom: 3rem;
 }
