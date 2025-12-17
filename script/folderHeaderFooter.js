@@ -28,20 +28,31 @@ export function loadHeader() {
 
 export function loadFooter() {
   document.querySelector("footer").innerHTML = `
+  <section class="footer-content">
     <p>Bus-D Designs &copy;</p>
+
+    <div class="site-links">
+      <p>Site Links</p>
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+    </div>
+
     <div class="social-links">
-      <p><strong>Social Links</strong></p>
+      <p>Social Links</p>
       <a href="https://www.instagram.com/busd_designs?igsh=ZjA0YThzdXZ1Znlv&utm_source=qr">
-        <img src="../images/images/instagram.jpg" alt="Instagram" />
+        <img src="images/images/instagram.jpg" alt="Instagram" />
       </a>
       <a href="https://www.facebook.com/profile.php?id=61558731148652">
-        <img src="../images/images/facebook.png" alt="Facebook" />
+        <img src="images/images/facebook.png" alt="Facebook" />
       </a>
     </div>
     <div class="legal">
-    <p><strong>Legal</strong></p>
-      <a href="../legal/privacy.html">Privacy</a>
+    <p>Legal</p>
+      <a href="legal/privacy.html">Privacy</a>
     </div>
+  </section>
   `;
 }
 
