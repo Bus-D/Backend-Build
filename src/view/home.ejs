@@ -1,0 +1,57 @@
+<%- include('paritals/header') %>
+
+
+
+    <section class="hero">
+        <h1>Bus-D Designs</h1>
+        <h2>Your stop for UI and Website design for any project</h2>
+        <a href="contact.html" class="order-button">Start Now</a>
+    </section>
+
+
+    <section class="home-intro">
+        <h2>UI/UX Design That Turns Ideas Into Usable, High-Impact Interfaces</h2>
+
+        <p>
+            Bus-D Designs is a freelance UI/UX and web design studio focused on creating clean,
+            intuitive, and conversion-driven digital experiences. I specialize in designing
+            mobile apps, web apps, and websites that are not only visually polished, but easy
+            to use and built with real users in mind.
+        </p>
+
+        <p>
+            Whether you're a startup launching a new product, a small business refreshing
+            your website, or a team looking to improve usability, I help transform ideas into
+            structured, scalable interface designs. My process blends user experience strategy,
+            thoughtful interface design, and modern visual systems to ensure every screen
+            serves a clear purpose.
+        </p>
+
+        <p>
+            From wireframes and user flows to high-fidelity UI and interactive prototypes,
+            I design with clarity, accessibility, and real-world use in mind. Every project
+            is approached with a strong focus on usability, consistency, and results—so your
+            product looks great and works even better.
+        </p>
+
+        <p>
+            If you’re looking for a freelance UI/UX designer who understands both design and
+            front-end structure, Bus-D Designs is here to help bring your vision to life.
+        </p>
+        <a href="services.html" class="order-button">View Services</a>
+    </section>
+
+
+    <main class="portfolio-grid">
+        <% featuredProjects.forEach(project => { %>
+            <div class="portfolio-item">
+                <a href="projects/<%= project.slug %>">
+                    <img src="<%= project.image" alt="<%= project.name %>">
+                    <h3><%= project.name %></h3>
+                </a>
+                <p><%= project.description %></p>
+            </div>
+        <% }); %>
+    </main>
+
+<%- include('partials/footer') %>

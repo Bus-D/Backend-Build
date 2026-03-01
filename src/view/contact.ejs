@@ -1,0 +1,91 @@
+<%- include('partials/header') %>
+
+    <section class="hero">
+        <h1>Contact Bus-D Designs</h1>
+        <h2>Let’s talk about your project and see how I can help</h2>
+    </section>
+
+    <section class="contact-intro">
+        <p>
+        Have a project in mind or need help improving an existing design? I work with
+        startups, small businesses, and individuals to create clear, user-friendly
+        interfaces for websites, web apps, and mobile applications.
+        </p>
+
+        <p>
+        Use the form below to tell me a bit about your project, timeline, and goals.
+        I’ll review your message and get back to you as soon as possible.
+        </p>
+    </section>
+
+
+
+    <section class="offer">
+        <h2>What I Can Help With</h2>
+
+        <ul>
+        <li><strong>UI/UX Design</strong> — Interface design focused on usability and clarity</li>
+        <li><strong>Website UI Design</strong> — Clean, modern layouts for marketing and content sites</li>
+        <li><strong>Mobile App UI Design</strong> — Intuitive interfaces for iOS and Android apps</li>
+        <li><strong>UX Reviews & Improvements</strong> — Usability audits and redesign recommendations</li>
+        <li><strong>Design Systems</strong> — Consistent components and scalable UI kits</li>
+        <li><strong>Custom Requests</strong> — If you’re unsure what you need, we can figure it out together</li>
+        </ul>
+    </section>
+
+
+    <section id="contact-form">
+        <h2>Send a Message</h2>
+
+        <form
+            name="contact"
+            method="POST"
+            action="/thank-you.html"
+            data-netlify="true"
+            class="contact-form"
+        >
+            <input type="hidden" name="form-name" value="contact">
+            <input type="hidden" name="bot-field">
+
+            <div hidden>
+                <label>Don’t fill this out: <input name="bot-field"></label>
+            </div>
+
+            <label>
+                Name
+                <input type="text" name="name" placeholder="Your name" required>
+            </label>
+
+            <label>
+                Email
+                <input type="email" name="email" placeholder="your@email.com" required>
+            </label>
+
+            <label for="design-type">
+                What type of design do you need?
+            </label>
+                <select id="design-type" name="design-type" required>
+                <option value="" selected disabled>Select a design type...</option>
+                <option value="branding">Branding (logo, identity, style guides)</option>
+                <option value="website-ui">Website UI Design</option>
+                <option value="app-ui">Mobile App UI Design</option>
+                <option value="ux">UX Review or Improvements</option>
+                <option value="design-system">Design System Creation</option>
+                <option value="marketing">Marketing or Miscellaneous Design</option>
+            </select>
+
+            <label>
+                Project Details
+                <textarea
+                    name="message"
+                    rows="5"
+                    placeholder="Tell me about your project, goals, timeline, or any questions you have"
+                    required
+                ></textarea>
+            </label>
+
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </section>
+
+    <%- include('partials/footer') %>

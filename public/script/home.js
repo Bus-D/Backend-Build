@@ -12,16 +12,7 @@ async function getData() {
     return null;
   }
 }
-function portfolioGridTemplate(data) {
-  return `
-  <div class="portfolio-item">
-    <a href="${data.link}">
-      <img src="${data.image}" alt="${data.title}">
-      <h3>${data.title}</h3>
-    </a>
-    <p>${data.description}</p> 
-  </div>`;
-}
+
 async function setPortfolioGrid() {
   const items = await getData();
   if (!items || !Array.isArray(items)) return;
