@@ -43,9 +43,9 @@
 - [ ] test db connection
 
 ## Session Configuration
-- [ ] configure 'express-session'
-- [ ] store sessions in PostgreSQL 'connect-pg-simple'
-- [ ] set secure cookies
+- [X] configure 'express-session'
+- [X] store sessions in PostgreSQL 'connect-pg-simple'
+- [X] set secure cookies
 - [ ] test sessions persistence
 
 ## Authentication System
