@@ -6,49 +6,47 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-/**
- * Set up db by running seed.sql if needed
- * Checks if faculty table has data. If not, runs a full reseed
- */
-const setupDatabase = async () => {
-    // Check if faculty table exists
-    let hasData = false;
-
+const setupDatbase = async () => {
     try {
-        const result = await db.query(
-            "SELECT EXISTS (SELECT 1 FROM faculty LIMIT 1) as has_data"
-        );
-        hasData = result.rows[0]?.has_data || false;
-    } catch (error) {
-        // If query fails treat the same as no data
-        hasData = false;
-    }
+        // Check if "users" table exists
+        const result = await db.query(`
+            SELECT EXISTS (
+            SELECT FROM information_schema.tables
+            WHERE table_name = 'users'
+            ) AS exists;
+        `);
 
-    if (hasData) {
-        console.log('Database already seeded');
+        const exists = result.rows[0].exists;
+
+        if (exists) {
+            console.log('Database already initialized');
+            return true;
+        }
+
+        console.log('Initializing database...');
+
+        const schemaPath = join(__dirname, 'sql', 'schema.sql');
+        const schemaSQL = fs.readFileSync(schemaPath, 'utf8');
+        await db.query(schemaSQL);
+
+        const seedPath = join(__dirname, 'sql', 'seed.sql');
+        if (fs.existsSync(seedPath)) {
+            const seedSQL = fs.readFileSync(seedPath, 'utf8');
+            await db.query(seedSQL);
+            console.log('Seed data inserted');
+        }
+
+        console.log('Database setup complete');
         return true;
+    } catch (error) {
+        console.error('Databse setup failed:', error);
     }
-
-    // No faculty - run full seed
-    console.log('Seeding database...');
-    const seedPath = join(__dirname, 'sql', 'seed.sql');
-    const seedSQL = fs.readFileSync(seedPath, 'utf8');
-    await db.query(seedSQL);
-
-    const portfolioPath = join(__dirname, 'sql', 'portfolio.sql');
-    if (fs.existsSync(portfolioPath)) {
-        const portfolioSQL = fs.readFileSync(portfolioPath, 'utf8');
-        await db.query(portfolioSQL);
-        console.log('Portfolio database tables initialized')
-    }
-    console.log('Database seeded successfully');
-    return true;
-}
+};
 
 const testConnection = async () => {
     const result = await db.query('SELECT NOW() as current_time');
     console.log('Database connection successful:', result.rows[0].current_time);
     return true;
-}
+};
 
-export { setupDatabase, testConnection }
+export { setupDatbase, testConnection}

@@ -37,9 +37,10 @@
 - [X] add .gitignore
 
 ## Database Setup
-- [ ] create database
-- [ ] create users table
-- [ ] set up databse file (config/db.js)
+- [X] create database
+- [X] create users table
+- [X] create project table
+- [X] set up databse file (db.js)
 - [ ] test db connection
 
 ## Session Configuration

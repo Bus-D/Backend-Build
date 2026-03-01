@@ -6,6 +6,9 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || 'production';
+const ENABLE_SQL_LOGGING = process.env.ENABLE_SQL_LOGGING?.toLowerCase() || 'true';
+
 // Read the CA certificate content
 const caCert = fs.readFileSync(path.join(__dirname, '../../bin', 'byuicse-psql-cert.pem'));
 
