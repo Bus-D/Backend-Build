@@ -41,7 +41,7 @@
 - [X] create users table
 - [X] create project table
 - [X] set up databse file (db.js)
-- [ ] test db connection
+- [X] test db connection
 
 ## Session Configuration
 - [X] configure 'express-session'
