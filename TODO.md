@@ -1,31 +1,34 @@
 # Project TODO
 
 ## Week 1 - Setup
-- [ ] Initialize Project
-- [ ] Install dependencies
-    - [ ] express
-    - [ ] ejs
-    - [ ] pg
-    - [ ] bcrypt
-    - [ ] express-session
-    - [ ] connect-pg simple
-    - [ ] dotenv
+- [X] Initialize Project
+- [X] Install dependencies
+    - [X] express
+    - [X] ejs
+    - [X] pg
+    - [X] bcrypt
+    - [X] express-session
+    - [X] connect-pg simple
+    - [X] dotenv
 - [ ] Create /src folder strucure
-    - [ ] model/
-    - [ ] controller/
-    - [ ] view/
+    - [X] model/
+    - [X] controller/
+    - [X] view/
         ### replace html files with ejs files
         - [X] home
         - [X] about
         - [X] contact
+            Will need to add validation to form
         - [X] thank-you
+        - [X] services
+            Will need to update services to be in line with furthered niche ideas
         - [ ] project/
             - [ ] list
             - [ ] detail
         ### partials
         - [X] add header
         - [X] add footer
-    - [ ] middleware/
+    - [X] middleware/
 - [ ] create server.js
 - [ ] set up basic express sever
 - [ ] configure EJS as view engine
@@ -77,4 +80,8 @@
 - [ ] create admin dashboard route + view
 - [ ] create client dashboard route + view
 - [ ] role-base redirect
-    
+
+## Later tasks
+- [ ] add validation to contact form
+- [ ] update all img tags to work
+- [ ]
