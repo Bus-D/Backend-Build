@@ -1,0 +1,154 @@
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+// import { setupDatabase, testConnection } from '.src/models/setup.js';
+import session from 'express-session';
+import connectPgSimple from 'connect-pg-simple';
+// import { caCert } from './models/db.js';
+// import { startSessionCleanup } from './src/utils/session-cleanup.js';
+// import flash from './src/middleware/flash.js';
+
+/**
+ * MVC Components
+ */
+// import routes from '.src/controllers/routes.js';
+// import { addLocalVariables } from './src/middleware/global.js';
+
+/**
+ * Server Config
+ */
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.firname(__filename);
+const NODE_ENV = process.env.NODE_ENV?.toLocaleLowerCase() || 'production';
+const PORT = process.env.port || 3000;
+console.log('NODE_ENV:', process.env.NODE_ENV);
+
+/**
+ * Express Server Set Up
+ */
+const app = express();
+
+// Initialize PostgreSQL session store
+const pgSession = connectPgSimple(session);
+
+/**
+ * Session Config
+ */
+app.use(session({
+    store: new pgSession({
+        conObject: {
+            connectionString: process.env.DB_URL,
+            // Config ssl
+            ssl: {
+                ca: caCert,
+                rejectUnauthorized: true,
+                checkServerIdentity: () => { return undefined; }
+            }
+        },
+        tableName: 'session',
+        createTableIfMissing: true
+    }),
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    cookie: {
+        secure: NODE_ENV.includes('dev') !== true,
+        httpOnly: true,
+        maxAge: 24 * 60 * 60 * 1000
+    }
+}));
+
+// Start atuo cleanup
+startSessionCleanup();
+
+/**
+ * Express Config
+ */
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('view engine', 'ejs');
+app.set('trust proxy', 1);
+app.set('views', path.join(__dirname, 'src/views'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json);
+
+/**
+ * Global Middleware
+ */
+// app.use(addLocalVariables);
+
+/**
+ * Flash Messages
+ */
+// app.use(flash);
+
+/**
+ * Routes
+ */
+// app.use('/', routes);
+
+/**
+ * Error Handling
+ */
+// 404
+app.use((req, res, next) => {
+    const err = new Error('Page Not Found');
+    err.status = 404;
+    next(err);
+});
+
+// Global Error Handler
+app.use((err, req, res, next) => {
+    // Prevent infinte loops
+    if (res.headerSent || res.finished) {
+        return next(err);
+    }
+
+    // Determine status and template
+    const status = err.status || 500;
+    const template = status === 404 ? '404' : '500';
+
+    // Prepare data
+    const context = {
+        title: status === 404 ? 'Page Not Found' : 'Server Error',
+        error: NODE_ENV === 'production' ? 'An error occured' : err.message,
+        stack: NODE_ENV === 'production' ? null : err.stack
+    };
+
+    try {
+        res.status(status).render(`errors/${template}`, context);
+    } catch(renderErr) {
+        if (!res.headerSent) {
+            res.status(status).send(`<h1>Error ${status}</h1><p>An error occured.</p>`);
+        }
+    }
+});
+
+/**
+ * Start WebSocket in Dev Mode
+ */
+if (NODE_ENV.includes('dev')) {
+    const ws = await import('ws');
+
+    try {
+        const wsPort = parseInt(PORT) + 1;
+        const wsServer = new ws.WebSocketServer({ port: wsPort });
+
+        wsServer.on('listening', () => {
+            console.log(`WebSocket server running on port ${wsPort}`);
+        });
+
+        wsServer.on('error', (error) => {
+            console.error('Websocket server error:', error) ;
+        });
+    } catch(error) {
+        console.error('Failed to start WebSocket server:', error);
+    }
+}
+
+/**
+ * Start Server
+ */
+app.listen(PORT, async () => {
+    await setupDatabase();
+    awaitTestConnection();
+    console.log(`Server is running on http://127.0.0.1:${PORT}`);
+});
