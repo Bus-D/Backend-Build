@@ -1,10 +1,10 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { setupDatabase, testConnection } from '.src/models/setup.js';
+import { setupDatabase, testConnection } from './src/models/setup.js';
 import session from 'express-session';
 import connectPgSimple from 'connect-pg-simple';
-import { caCert } from './models/db.js';
+import { caCert } from './src/models/db.js';
 // import { startSessionCleanup } from './src/utils/session-cleanup.js';
 // import flash from './src/middleware/flash.js';
 
@@ -12,15 +12,15 @@ import { caCert } from './models/db.js';
  * MVC Components
  */
 // import routes from '.src/controllers/routes.js';
-// import { addLocalVariables } from './src/middleware/global.js';
+import { addLocalVariables } from './src/middleware/global.js';
 
 /**
  * Server Config
  */
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.firname(__filename);
+const __dirname = path.dirname(__filename);
 const NODE_ENV = process.env.NODE_ENV?.toLocaleLowerCase() || 'production';
-const PORT = process.env.port || 3000;
+const PORT = process.env.PORT || 3000;
 console.log('NODE_ENV:', process.env.NODE_ENV);
 
 /**
@@ -50,30 +50,31 @@ app.use(session({
     }),
     secret: process.env.SESSION_SECRET,
     resave: false,
+    saveUninitialized: false,
     cookie: {
-        secure: NODE_ENV.includes('dev') !== true,
+        secure: NODE_ENV === 'production',
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000
     }
 }));
 
 // Start atuo cleanup
-startSessionCleanup();
+// startSessionCleanup();
 
 /**
  * Express Config
  */
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('view engine', 'ejs');
+app.set('view engine', 'ejs');
 app.set('trust proxy', 1);
 app.set('views', path.join(__dirname, 'src/views'));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json);
+app.use(express.json());
 
 /**
  * Global Middleware
  */
-// app.use(addLocalVariables);
+app.use(addLocalVariables);
 
 /**
  * Flash Messages

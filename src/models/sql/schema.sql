@@ -10,14 +10,14 @@ CREATE TABLE users (
 );
 
 CREATE TABLE projects (
-    id SERIAL PRIMARY KEY
+    id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description TEXT,
     status VARCHAR(20) DEFAULT 'active' CHECK (status IN ('active', 'archived')),
     progress_mode VARCHAR(20) DEFAULT 'auto' CHECK (progress_mode IN ('auto', 'manual')),
     progress_percentage INTEGER DEFAULT 0 CHECK (progress_percentage >= 0 AND progress_percentage <= 100),
     deadline DATE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

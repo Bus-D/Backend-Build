@@ -47,15 +47,7 @@
     <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
 
 
-
-    <!-- CSS + JS -->
-    <link rel="stylesheet" href="styles/styles.css">
-    <script type="module" src="script/main.js" defer></script>
-    <script src="script/home.js" defer></script>
-
-    <title><%- title %></title>
-
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js)
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17592758792"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -63,7 +55,28 @@
     gtag('js', new Date());
 
     gtag('config', 'AW-17592758792');
-</script>
+</script> -->
+
+<% if (NODE_ENV.includes('dev')) { %>
+    <script>
+        const host = window.location.hostname;
+        const currentPort = window.location.port;
+
+        const wsPort = currentPort ? (parseInt(currentPort) + 1) : 3001;
+
+        const ws = new WebSocket(`ws://${host}:${wsPort}`);
+        ws.onclose = () => {
+            setTimeout(() => location.reload(), 2000);
+        }
+    </script>
+<% } %>
+
+    <!-- CSS + JS -->
+    <link rel="stylesheet" href="styles/styles.css">
+    <script type="module" src="script/main.js" defer></script>
+    <script src="script/home.js" defer></script>
+
+    <title><%- title %></title>
 </head>
 
 <body>

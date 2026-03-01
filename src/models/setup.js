@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const setupDatbase = async () => {
+const setupDatabase = async () => {
     try {
         // Check if "users" table exists
         const result = await db.query(`
@@ -49,4 +49,4 @@ const testConnection = async () => {
     return true;
 };
 
-export { setupDatbase, testConnection}
+export { setupDatabase, testConnection}
