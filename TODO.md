@@ -10,7 +10,7 @@
     - [X] express-session
     - [X] connect-pg simple
     - [X] dotenv
-- [ ] Create /src folder strucure
+- [X] Create /src folder strucure
     - [X] model/
     - [X] controller/
     - [X] view/
@@ -29,12 +29,12 @@
         - [X] add header
         - [X] add footer
     - [X] middleware/
-- [ ] create server.js
-- [ ] set up basic express sever
-- [ ] configure EJS as view engine
-- [ ] set up static folder
-- [ ] add .env file
-- [ ] add .gitignore
+- [X] create server.js
+- [X] set up basic express sever
+- [X] configure EJS as view engine
+- [X] set up static folder
+- [X] add .env file
+- [X] add .gitignore
 
 ## Database Setup
 - [ ] create database
