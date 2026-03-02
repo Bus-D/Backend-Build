@@ -1,6 +1,4 @@
-<%- include('paritals/header') %>
-
-
+<%- include('partials/header') %>
 
     <section class="hero">
         <h1>Bus-D Designs</h1>
@@ -40,18 +38,5 @@
         </p>
         <a href="services.html" class="order-button">View Services</a>
     </section>
-
-
-    <main class="portfolio-grid">
-        <% featuredProjects.forEach(project => { %>
-            <div class="portfolio-item">
-                <a href="projects/<%= project.slug %>">
-                    <img src="<%= project.image" alt="<%= project.name %>">
-                    <h3><%= project.name %></h3>
-                </a>
-                <p><%= project.description %></p>
-            </div>
-        <% }); %>
-    </main>
 
 <%- include('partials/footer') %>

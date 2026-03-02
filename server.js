@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import 'dotenv/config';
 import { fileURLToPath } from 'url';
 import { setupDatabase, testConnection } from './src/models/setup.js';
 import session from 'express-session';
@@ -11,7 +12,7 @@ import { caCert } from './src/models/db.js';
 /**
  * MVC Components
  */
-// import routes from '.src/controllers/routes.js';
+import routes from './src/controllers/routes.js';
 import { addLocalVariables } from './src/middleware/global.js';
 
 /**
@@ -84,7 +85,7 @@ app.use(addLocalVariables);
 /**
  * Routes
  */
-// app.use('/', routes);
+app.use('/', routes);
 
 /**
  * Error Handling
@@ -134,13 +135,13 @@ if (NODE_ENV.includes('dev')) {
         const wsServer = new ws.WebSocketServer({ port: wsPort });
 
         wsServer.on('listening', () => {
-            console.log(`WebSocket server running on port ${wsPort}`);
+        console.log(`WebSocket server is running on port ${wsPort}`);
         });
 
         wsServer.on('error', (error) => {
-            console.error('Websocket server error:', error) ;
+        console.error('Websocket server error:', error);
         });
-    } catch(error) {
+    } catch (error) {
         console.error('Failed to start WebSocket server:', error);
     }
 }
