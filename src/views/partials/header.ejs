@@ -57,32 +57,34 @@
     gtag('config', 'AW-17592758792');
 </script> -->
 
-<% if (NODE_ENV.includes('dev')) { %>
-    <script>
+    <% if (NODE_ENV.includes('dev')) { %>
+        <script>
+        //Get current hostname and port from browser
         const host = window.location.hostname;
         const currentPort = window.location.port;
 
+        // Calculate WebSocket port (current port + 1)
         const wsPort = currentPort ? (parseInt(currentPort) + 1) : 3001;
 
+        //Create WebSocket connect using dynamic hostname and port
         const ws = new WebSocket(`ws://${host}:${wsPort}`);
         ws.onclose = () => {
             setTimeout(() => location.reload(), 2000);
-        }
-    </script>
-<% } %>
+        };
+        </script>
+    <% } %>
 
     <!-- CSS + JS -->
-    <link rel="stylesheet" href="/css/styles.css">
-    <script type="module" src="script/main.js" defer></script>
-    <script src="script/home.js" defer></script>
-
+    <%- renderStyles() %>
+    <%- renderScripts() %>
+    
     <title><%- title %></title>
 </head>
 
 <body>
     <header>
         <div class="header-top">
-            <a href="index.html" class="logo-link">
+            <a href="/" class="logo-link" title="Home">
                 <img src="images/logo/Bus-DLogo.png" alt="Bus-D Designs Logo" class="logo" />
             </a>
 

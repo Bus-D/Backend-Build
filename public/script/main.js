@@ -11,3 +11,15 @@ function menuToggle() {
     navLinks.classList.toggle("show");
   })
 }
+
+export function loadHeader() {
+  // Highlight active page
+  const currentPage = window.location.pathname.split("/").pop();
+  document
+    .querySelectorAll("nav a")
+    .forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+      }
+    });
+}
