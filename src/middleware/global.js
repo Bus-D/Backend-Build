@@ -6,10 +6,13 @@ const addLocalVariables = (req, res, next) => {
     res.locals.queryParams = {...req.query};
 
     // // Set logged in state
-    // res.localed.isLoggedIn = false;
+    // res.locals.isLoggedIn = false;
     // if (req.session && req.session.user) {
     //     res.locals.isLoggedIn = true;
     // }
+
+    // Admin
+    res.locals.isAdmin = false;
 
     setHeadAssetsFunctionality(res);
 
