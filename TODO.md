@@ -70,9 +70,9 @@
 - [ ] redirect to home/login
 
 ## Middleware
-- [ ] requireAuth
+- [X] requireAuth
     - blocks unauthenticated users
-- [ ] requireAdmin
+- [X] requireAdmin
     - Allows only admin role
 - [ ] attach logged-in user to req.user
 - [ ] add global error handler

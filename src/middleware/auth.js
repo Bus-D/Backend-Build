@@ -53,4 +53,4 @@ const requireAdmin = (roleName) => {
     }
 }
 
-export { requireLogin, requireRole };
+export { requireLogin, requireRole, requireAdmin };

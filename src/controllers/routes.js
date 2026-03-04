@@ -1,5 +1,9 @@
 import { Router } from 'express';
 import { homePage, aboutPage } from './index.js';
+import registrationRoutes from './forms/registration.js';
+import loginRoutes from './forms/login.js';
+import { processLogout, showDashboard } from './forms/login.js';
+import { requireLogin, requireRole, requireAdmin } from '../middleware/auth.js';
 
 const router = Router();
 
@@ -17,5 +21,15 @@ router.use('/', (req, res, next) => {
 // Static Pages
 router.get('/', homePage);
 router.get('/about', aboutPage);
+
+// Registration Routes
+router.use('/register', registrationRoutes);
+
+// Login Routes
+router.use('/login', loginRoutes);
+
+//Authentication results
+router.get('/logout', processLogout);
+router.get('/dashboard', requireLogin, requireRole, showDashboard);
 
 export default router;
