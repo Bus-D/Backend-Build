@@ -1,0 +1,33 @@
+<%- include('../../partials/header') %>
+<main>
+    <section class="contact-intro">
+        <h3>Why have a login on a portfolio website?</h3>
+        <p>Because I built in a client dashboard to my website. It allows me to share progress with clients while working on freelance jobs.</p>
+    </section>
+
+    <section id ="contact-form">
+        <form
+            name="email"
+            method="POST"
+            action="/login"
+            class="contact-form"
+        >
+            <label for="email">
+                Email
+                <input type="email" name="email" placeholder="example@example.com" required>
+            </label>
+
+            <label for="password">
+                Password
+                <input type="password" name="password" placeholder="password" required>
+            </label>
+
+            <button type="submit" class="btn">Login</button>
+        </form>
+
+        <div class="form-footer">
+            <p>New user? <a href="/register">Create an account</a></p>
+        </div>
+    </section>
+</main>
+<%- include('../../partials/footer')

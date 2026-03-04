@@ -5,11 +5,11 @@ const addLocalVariables = (req, res, next) => {
     // All req.query
     res.locals.queryParams = {...req.query};
 
-    // // Set logged in state
-    // res.locals.isLoggedIn = false;
-    // if (req.session && req.session.user) {
-    //     res.locals.isLoggedIn = true;
-    // }
+    // Set logged in state
+    res.locals.isLoggedIn = false;
+    if (req.session && req.session.user) {
+        res.locals.isLoggedIn = true;
+    }
 
     // Admin
     res.locals.isAdmin = false;

@@ -11,7 +11,7 @@ import {
     updateUser,
     deleteUser
 } from '../../models/forms/registration.js';
-// import { requireLogin} from '../../middlware/auth.js';
+import { requireLogin, requireRole } from '../../middleware/auth.js';
 // import { registrationValidation, editValidation } from '../../models/validation/forms.js';
 
 const router = Router();

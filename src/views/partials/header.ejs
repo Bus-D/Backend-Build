@@ -97,8 +97,10 @@
     
         <nav class="nav-links">
             <a href="/">Home</a>
-            <a href="about">Contact</a>
-            <a href="">Services</a>
+            <a href="/about">Contact</a>
+            <% if (!isLoggedIn) { %>
+                <a href="/forms/login">Login</a>
+            <% } %>
             <a href="forms/contact" class="order-button">Get a Quote</a>
         </nav>
     </header>
