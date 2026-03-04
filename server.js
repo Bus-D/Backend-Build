@@ -6,8 +6,8 @@ import { setupDatabase, testConnection } from './src/models/setup.js';
 import session from 'express-session';
 import connectPgSimple from 'connect-pg-simple';
 import { caCert } from './src/models/db.js';
-// import { startSessionCleanup } from './src/utils/session-cleanup.js';
-// import flash from './src/middleware/flash.js';
+import { startSessionCleanup } from './src/utils/session-cleanup.js';
+import flash from './src/middleware/flash.js';
 
 /**
  * MVC Components
@@ -60,7 +60,7 @@ app.use(session({
 }));
 
 // Start atuo cleanup
-// startSessionCleanup();
+startSessionCleanup();
 
 /**
  * Express Config
@@ -80,7 +80,7 @@ app.use(addLocalVariables);
 /**
  * Flash Messages
  */
-// app.use(flash);
+app.use(flash);
 
 /**
  * Routes

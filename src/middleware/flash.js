@@ -71,12 +71,41 @@ const flashMiddleware = (req, res, next) => {
             req.session.flash[type] = [];
             return messages;
         }
-    }
+    
 
-    const allMessages = req.session.flash || {
-        success: [],
-        error: [],
-        warning: [],
-        info: []
-    }
+        const allMessages = req.session.flash || {
+            success: [],
+            error: [],
+            warning: [],
+            info: []
+        }
+
+        req.session.flash = {
+            success: [],
+            error: [],
+            warning: [],
+            info: []
+        };
+
+        return allMessages;
+    };
+
+    next();
 }
+
+const flashLocals = (req, res, next) => {
+    res.locals.flash = req.flash;
+    next();
+}
+
+/**
+ * 
+ * Combines both functions into one that calls in order
+ */
+const flash = (req, res, next) => {
+    flashMiddleware(req, res, () => {
+        flashLocals(req, res, next);
+    });
+};
+
+export default flash;
