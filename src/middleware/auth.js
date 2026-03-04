@@ -42,6 +42,7 @@ const requireAdmin = (roleName) => {
         }
 
         if (req.session.role !== 'admin') {
+            console.log(`An attempt to access admin level features was made by ${req.session.user}`);
             req.flash('error', 'You need to be an admin');
             res.redirect('/');
         }
