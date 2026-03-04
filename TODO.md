@@ -85,4 +85,4 @@
 ## Later tasks
 - [ ] add validation to contact form
 - [ ] update all img tags to work
-- [ ]
+- [ ] refactor registration model for user/project based models
