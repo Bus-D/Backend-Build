@@ -58,7 +58,7 @@
 - [X] redirect after success
 
 ### Login
-- [ ] create login route
+- [X] create login route
 - [ ] validate credentials
 - [ ] compare password hash
 - [ ] make sure password is deleted
@@ -75,7 +75,7 @@
 - [X] requireAdmin
     - Allows only admin role
 - [X] attach logged-in user to req.user
-- [ ] add global error handler
+- [X] add global error handler
 
 ## Basic Dashboards
 - [ ] create admin dashboard route + view

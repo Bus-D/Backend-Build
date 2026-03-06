@@ -26,7 +26,7 @@ router.get('/about', aboutPage);
 router.use('/register', registrationRoutes);
 
 // Login Routes
-router.use('/forms/login', loginRoutes);
+router.use('/login', loginRoutes);
 
 //Authentication results
 router.get('/logout', processLogout);

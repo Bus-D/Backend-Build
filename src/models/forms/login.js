@@ -10,11 +10,11 @@ import db from '../db.js';
 const findUserByEmail = async (email) => {
     const query = `
         SELECT
-            id
-            name
-            email
-            password
-            role
+            id,
+            name,
+            email,
+            password_hash ,
+            role,
             created_at
         FROM users
         WHERE LOWER(email) = LOWER($1)
@@ -34,7 +34,6 @@ const findUserByEmail = async (email) => {
  */
 const verifyPassword = async (plainPassword, hashedPassword) => {
     try {
-        console.log(req.body);
         return await bcrypt.compare(plainPassword, hashedPassword);
     } catch(error) {
         console.error('Password Verification Error:', error);

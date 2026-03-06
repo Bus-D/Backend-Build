@@ -154,13 +154,13 @@ const processDeleteAccount = async (req, res) => {
     const targetUser = await getUserById(targetUserId);
     const currentUser = req.session.user
 
-    if (!currentUser.role !== 'admin') {
+    if (currentUser.role !== 'admin') {
         console.log('Unauthorized Delete Attempt:' `${currentUser} attempted to delete ${targetUser} account`);
         req.flash('error', 'You do not have permission to delete users');
         return res.redirect('/forms/login');
     }
 
-    if (currentUser.role === admin && currentUser.id === targetUserId) {
+    if (currentUser.role === 'admin' && currentUser.id === targetUserId) {
         req.flash('error', 'You cannot delete yourself');
         return res.redirect('/admin/dashboard/allAccounts');
     }

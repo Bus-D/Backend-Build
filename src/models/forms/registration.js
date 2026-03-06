@@ -111,7 +111,7 @@ const getProjectsByUser = async (userId) => {
 
 const updateUser = async (id, name, email) => {
     const query = `
-        UDATE users
+        UPDATE users
         SET
             name = $1,
             email = $2,

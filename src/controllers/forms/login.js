@@ -18,7 +18,7 @@ const processLogin = async (req, res) => {
         errors.array().forEach(error => {
             req.flash('error', error.msg);
         })
-        return res.redirect('/forms/login/form');
+        return res.redirect('/login');
     }
 
     
@@ -33,7 +33,7 @@ const processLogin = async (req, res) => {
             return res.redirect('/login');
         }
 
-        const verifiedPassword = await verifyPassword(password, foundUser.password);
+        const verifiedPassword = await verifyPassword(password, foundUser.password_hash);
 
         if (!verifiedPassword) {
             req.flash('error', 'Incorrect Password');
@@ -41,15 +41,15 @@ const processLogin = async (req, res) => {
         }
 
         // SECURITY: remove password before storing
-        delete foundUser.password;
+        delete foundUser.password_hash;
 
         req.session.user = foundUser;
 
         if (req.session.user.role === 'admin') {
-            return res.redirect('/admin/dashboard');
+            return res.redirect('/login/loggedin');
         }
 
-        return res.redirect('/client/dashboard');
+        return res.redirect('/login/loggedin');
     } catch(error) {
         console.error('Login error', error);
         req.flash('error', 'An error occured when logging in. Please try again');
@@ -84,8 +84,14 @@ const processLogout = (req, res) => {
 }
 
 const showDashboard = (req, res) => {
+
     const user = req.session.user;
     const sessionData = req.session;
+
+    if (!req.session.user) {
+        req.flash('error', 'You must log in first');
+        return res.redirect('/login');
+    }
 
     // Check for password in session data
     if (user && user.password) {
@@ -98,14 +104,14 @@ const showDashboard = (req, res) => {
     }
 
     if (user.role === 'admin') {
-        res.render('admin/dashboard', {
+        return res.render('forms/loggedin', {
             title: 'Admin Dashboard',
             sessionData,
             user
         });
     }
 
-    res.render('client/dashboard', {
+    res.render('forms/loggedin', {
         title: 'Client Dashboard',
         sessionData,
         user
@@ -114,6 +120,7 @@ const showDashboard = (req, res) => {
 
 router.get('/', showLoginForm);
 router.post('/', processLogin);
+router.get('/loggedin', showDashboard);
 
 export default router;
 export { processLogout, showDashboard };

@@ -25,7 +25,7 @@ const requireRole = (roleName) => {
             res.redirect('/login');
         }
 
-        if (req.session.role !== roleName) {
+        if (req.session.user.role !== roleName) {
             req.flash('error', 'You do not have the required permissions to see this page or preform this action');
             res.redirect('/');
         }
