@@ -59,15 +59,15 @@
 
 ### Login
 - [X] create login route
-- [ ] validate credentials
-- [ ] compare password hash
-- [ ] make sure password is deleted
-- [ ] store user ID + role in session
+- [X] validate credentials
+- [X] compare password hash
+- [X] make sure password is deleted
+- [X] store user ID + role in session
 - [ ] redirect based on role
 
 ### Logout
-- [ ] destroy session
-- [ ] redirect to home/login
+- [X] destroy session
+- [X] redirect to home/login
 
 ## Middleware
 - [X] requireAuth
