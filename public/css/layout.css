@@ -104,6 +104,10 @@ nav .order-button {
   margin: 60px auto 0 auto;
 }
 
+main {
+  margin-top: 40px;
+}
+
 /* Home Page */
 .home-intro {
   width: 90%;
@@ -134,7 +138,8 @@ nav .order-button {
 
 .contact-intro {
   width: 90%;
-  margin: 0 auto;
+  margin: 40px auto 0 auto;
+
 }
 
 /* ---------- Footer ---------- */
@@ -206,6 +211,7 @@ footer img:hover {
     justify-content: flex-start;
     align-items: center;
     flex: 1;
+    margin-bottom: 40p
   }
 
   .nav-links {

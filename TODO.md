@@ -51,11 +51,11 @@
 
 ## Authentication System
 ### Registration (client only) 
-- [ ] create register route
-- [ ] hash password with bcrypt
-- [ ] store new clinet in database
-- [ ] prevent duplicate email registration
-- [ ] redirect after success
+- [X] create register route
+- [X] hash password with bcrypt
+- [X] store new clinet in database
+- [X] prevent duplicate email registration
+- [X] redirect after success
 
 ### Login
 - [ ] create login route
@@ -74,7 +74,7 @@
     - blocks unauthenticated users
 - [X] requireAdmin
     - Allows only admin role
-- [ ] attach logged-in user to req.user
+- [X] attach logged-in user to req.user
 - [ ] add global error handler
 
 ## Basic Dashboards

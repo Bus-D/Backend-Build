@@ -31,7 +31,7 @@ const saveUser = async (name, email, hashedPassword) => {
             $1,
             $2,
             $3,
-            ('client')
+            ('client'))
         RETURNING id, name, email, role, created_at
     `;
 

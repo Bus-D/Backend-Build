@@ -34,11 +34,13 @@ const findUserByEmail = async (email) => {
  */
 const verifyPassword = async (plainPassword, hashedPassword) => {
     try {
+        console.log(req.body);
         return await bcrypt.compare(plainPassword, hashedPassword);
     } catch(error) {
         console.error('Password Verification Error:', error);
         return false;
     }
+
 };
 
 export {findUserByEmail, verifyPassword };

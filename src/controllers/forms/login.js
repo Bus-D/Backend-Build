@@ -5,7 +5,7 @@ import { Router } from 'express';
 const router = Router();
 
 const showLoginForm = (req, res) => {
-    res.render('forms/login/form', {
+    res.render('forms/login', {
         title: 'Login'
     });
 }

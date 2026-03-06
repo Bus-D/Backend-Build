@@ -20,7 +20,7 @@ const router = Router();
  * Display Registration Form
  */
 const showRegistrationForm = (req, res) => {
-    res.render('forms/register/form', {
+    res.render('forms/register', {
         title: 'Client Account Resgistration'
     });
 };

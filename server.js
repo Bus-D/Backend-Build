@@ -135,11 +135,11 @@ if (NODE_ENV.includes('dev')) {
         const wsServer = new ws.WebSocketServer({ port: wsPort });
 
         wsServer.on('listening', () => {
-        console.log(`WebSocket server is running on port ${wsPort}`);
+            console.log(`WebSocket server in running on port ${wsPort}`);
         });
 
         wsServer.on('error', (error) => {
-        console.error('Websocket server error:', error);
+            console.error('Websocket server error:', error);
         });
     } catch (error) {
         console.error('Failed to start WebSocket server:', error);

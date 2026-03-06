@@ -1,4 +1,4 @@
-<%- include('../../partials/header') %>
+<%- include('../partials/header') %>
 <main>
     <section class="contact-intro">
         <h3>Why have a login on a portfolio website?</h3>
@@ -17,10 +17,8 @@
                 <input type="email" name="email" placeholder="example@example.com" required>
             </label>
 
-            <label for="password">
-                Password
-                <input type="password" name="password" placeholder="password" required>
-            </label>
+            <label for="password">Password</label>
+            <input type="password" name="password" placeholder="password" required>
 
             <button type="submit" class="btn">Login</button>
         </form>
@@ -28,6 +26,7 @@
         <div class="form-footer">
             <p>New user? <a href="/register">Create an account</a></p>
         </div>
+        
     </section>
 </main>
-<%- include('../../partials/footer')
+<%- include('../partials/footer') %>
