@@ -32,4 +32,7 @@ router.use('/login', loginRoutes);
 router.get('/logout', processLogout);
 router.get('/dashboard', requireLogin, requireRole, showDashboard);
 
+// Admin Routes
+router.get('/admin', requireLogin, requireAdmin, adminRoutes);
+
 export default router;

@@ -46,10 +46,10 @@ const processLogin = async (req, res) => {
         req.session.user = foundUser;
 
         if (req.session.user.role === 'admin') {
-            return res.redirect('/login/loggedin');
+            return res.redirect('/admin');
         }
 
-        return res.redirect('/login/loggedin');
+        return res.redirect('/client');
     } catch(error) {
         console.error('Login error', error);
         req.flash('error', 'An error occured when logging in. Please try again');
@@ -104,14 +104,14 @@ const showDashboard = (req, res) => {
     }
 
     if (user.role === 'admin') {
-        return res.render('forms/loggedin', {
+        return res.render('admin/dashboard', {
             title: 'Admin Dashboard',
             sessionData,
             user
         });
     }
 
-    res.render('forms/loggedin', {
+    res.render('client/dashboard', {
         title: 'Client Dashboard',
         sessionData,
         user
@@ -120,7 +120,9 @@ const showDashboard = (req, res) => {
 
 router.get('/', showLoginForm);
 router.post('/', processLogin);
-router.get('/loggedin', showDashboard);
+router.get('/admin', showDashboard);
+router.get('/client', showDashboard);
+
 
 export default router;
 export { processLogout, showDashboard };

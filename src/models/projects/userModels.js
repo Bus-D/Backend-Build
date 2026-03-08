@@ -74,41 +74,6 @@ const getUserByEmail = async (email) => {
     return result.rows[0] || null;
 };
 
-const getUsersByProject = async (projectId) => {
-    const query = `
-        SELECT 
-            users.id,
-            users.name,
-            users.role,
-            project_users.project_id AS "projectId",
-            project_users.permission_level AS "permissions"
-        FROM users
-        INNER JOIN project_users 
-            ON users.id = projest_users.user_id
-        WHERE project_users.project_id = $1
-    `;
-
-    const result = await db.query(query, [projectId]);
-    return result.rows;
-}
-
-const getProjectsByUser = async (userId) => {
-    const query = `
-        SELECT
-            projects.id,
-            projects.name,
-            projects.status,
-            project_users.permission_level AS "permissions"
-        FROM projects
-        INNER JOIN project_users
-            ON projects.id = project_users.project_id
-        WHERE project_users.user_id = $1
-        `;
-
-        const result = await db.query(query, [userId]);
-        return result.rows;
-}
-
 const updateUser = async (id, name, email) => {
     const query = `
         UPDATE users
@@ -126,7 +91,7 @@ const updateUser = async (id, name, email) => {
 
 const deleteUser = async (id) => {
     const query = `DELETE FROM users WHERE id = $1`;
-    const result = db.query(query, [id]);
+    const result = await db.query(query, [id]);
     return result.rowCount > 0;
 }
 
@@ -143,7 +108,7 @@ const getAllUsers = async () => {
         ORDER BY name
         `;
 
-    const result = db.query(query);
+    const result = await db.query(query);
     return result.rows;
 }
 
@@ -152,8 +117,6 @@ export {
     saveUser,
     getUserById,
     getUserByEmail,
-    getUsersByProject,
-    getProjectsByUser,
     updateUser,
     deleteUser,
     getAllUsers

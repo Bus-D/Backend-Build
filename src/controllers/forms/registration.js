@@ -6,11 +6,9 @@ import {
     saveUser,
     getAllUsers,
     getUserById,
-    getUsersByProject,
-    getProjectsByUser,
     updateUser,
     deleteUser
-} from '../../models/forms/registration.js';
+} from '../../models/users/userModels.js';
 import { requireLogin, requireRole } from '../../middleware/auth.js';
 // import { registrationValidation, editValidation } from '../../models/validation/forms.js';
 
