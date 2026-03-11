@@ -1,5 +1,5 @@
 import { validationResult } from 'express-validator';
-import { findUserByEmail, verifyPassword } from '../../models/forms/login.js';
+import { findUserByEmail, verifyPassword } from '../../models/authentication/login.js';
 import { Router } from 'express';
 
 const router = Router();

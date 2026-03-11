@@ -33,6 +33,9 @@ router.get('/logout', processLogout);
 router.get('/dashboard', requireLogin, requireRole, showDashboard);
 
 // Admin Routes
-router.get('/admin', requireLogin, requireAdmin, adminRoutes);
+router.get('/admin', requireLogin, requireAdmin);
+router.get('/admin/users', requireAdmin);
+router.get('/admin/projects', requireAdmin);
+router.get('/admin/settings', requireAdmin);
 
 export default router;

@@ -8,7 +8,7 @@ import {
     getUserById,
     updateUser,
     deleteUser
-} from '../../models/users/userModels.js';
+} from '../../models/projects/userModels.js';
 import { requireLogin, requireRole } from '../../middleware/auth.js';
 // import { registrationValidation, editValidation } from '../../models/validation/forms.js';
 

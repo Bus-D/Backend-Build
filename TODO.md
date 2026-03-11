@@ -1,4 +1,4 @@
-# Project TODO
+﻿# Project TODO
 
 ## Week 1 - Setup
 - [X] Initialize Project
@@ -63,7 +63,7 @@
 - [X] compare password hash
 - [X] make sure password is deleted
 - [X] store user ID + role in session
-- [ ] redirect based on role
+- [X] redirect based on role
 
 ### Logout
 - [X] destroy session
@@ -86,3 +86,52 @@
 - [ ] add validation to contact form
 - [ ] update all img tags to work
 - [ ] refactor registration model for user/project based models
+
+---
+
+## Week 2 - Dashboards & Project Views
+
+### Bug Fixes
+- [ ] Fix `requireRole` logic error in `auth.js` (missing `!` before `req.session.user`)
+- [ ] Fix `requireAdmin` logic error in `auth.js` (`&&` -> `||`) and add missing `next()` call
+- [ ] Fix admin routes in `routes.js` - `requireAdmin` is a factory but called without invoking it
+- [ ] Fix `requireRole` call on `/dashboard` route - missing role argument
+- [ ] Fix `dashboardController.js` import path (`../../models/projects.js` does not exist)
+
+### Admin Dashboard
+- [ ] Create `src/views/admin/` directory and `dashboard.ejs` view
+- [ ] Wire `/admin` route to `dashboardController.showDashboard`
+- [ ] Complete `showClients` handler in `dashboardController.js`
+- [ ] Write admin dashboard model queries in `dashboardModel.js` (currently empty)
+    - [ ] get all projects with status summary
+    - [ ] get all clients / users
+
+### Client Dashboard
+- [ ] Add `/client` route in `routes.js` with `requireLogin`
+- [ ] Create client dashboard controller
+- [ ] Create `src/views/client/dashboard.ejs` view
+- [ ] Write client dashboard model queries
+    - [ ] get projects assigned to current user
+    - [ ] get milestones by project
+    - [ ] get updates by project
+
+### Role-Based Redirect (Full Flow)
+- [ ] Confirm `/admin` route renders view correctly after login
+- [ ] Confirm `/client` route renders view correctly after login
+- [ ] Mark off `role-base redirect` in Basic Dashboards above once both routes work
+
+### Project Views
+- [ ] Create `src/views/projects/list.ejs`
+- [ ] Create `src/views/projects/detail.ejs`
+- [ ] Add project list route + controller (client-facing)
+- [ ] Add project detail route + controller (client-facing)
+
+### Admin Project Management
+- [ ] Create project routes: create, edit, delete
+- [ ] Create milestone management routes + controllers
+- [ ] Create update/progress-posting routes + controllers
+- [ ] Create `src/views/admin/projects/` views (create, edit forms)
+
+### Session & Validation
+- [ ] Test session persistence across requests
+- [ ] Add server-side validation to contact form (express-validator)
