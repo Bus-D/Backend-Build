@@ -20,37 +20,22 @@ const requireLogin = (req, res, next) => {
  */
 const requireRole = (roleName) => {
     return (req, res, next) => {
-        if (!req.session || req.session.user) {
+        if (!req.session || !req.session.user) {
             req.flash('error', 'You must be logged in to see this page');
-            res.redirect('/login');
+            return res.redirect('/login');
         }
 
         if (req.session.user.role !== roleName) {
             req.flash('error', 'You do not have the required permissions to see this page or preform this action');
-            res.redirect('/');
+            return res.redirect('/');
+        }
+
+        if (req.session.user.role === 'admin') {
+            res.locals.isAdmin = true;
         }
 
         next();
     }
 }
 
-const requireAdmin = (roleName) => {
-    return (req, res, next) => {
-        if (!req.session && req.session.user) {
-            req.flash('error', 'You need to be logged in');
-            res.redirect('/login');
-        }
-
-        if (req.session.role !== 'admin') {
-            console.log(`An attempt to access admin level features was made by ${req.session.user}`);
-            req.flash('error', 'You need to be an admin');
-            res.redirect('/');
-        }
-
-        if (req.session.role === 'admin') {
-            res.locals.isAdmin = true;
-        }
-    }
-}
-
-export { requireLogin, requireRole, requireAdmin };
+export { requireLogin, requireRole };

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getUsersByProject, getProjectsByUsers } from '../../models/projects.js';
+import { getUsersByProject, getProjectsByUsers } from '../../models/projects/projectModel.js';
 
 const router = new Router();
 

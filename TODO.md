@@ -92,14 +92,14 @@
 ## Week 2 - Dashboards & Project Views
 
 ### Bug Fixes
-- [ ] Fix `requireRole` logic error in `auth.js` (missing `!` before `req.session.user`)
-- [ ] Fix `requireAdmin` logic error in `auth.js` (`&&` -> `||`) and add missing `next()` call
-- [ ] Fix admin routes in `routes.js` - `requireAdmin` is a factory but called without invoking it
-- [ ] Fix `requireRole` call on `/dashboard` route - missing role argument
-- [ ] Fix `dashboardController.js` import path (`../../models/projects.js` does not exist)
+- [X] Fix `requireRole` logic error in `auth.js` (missing `!` before `req.session.user`)
+- [X] Fix `requireAdmin` logic error in `auth.js` (`&&` -> `||`) and add missing `next()` call
+- [X] Fix admin routes in `routes.js` - `requireAdmin` is a factory but called without invoking it
+- [X] Fix `requireRole` call on `/dashboard` route - missing role argument
+- [X] Fix `dashboardController.js` import path (`../../models/projects.js` does not exist)
 
 ### Admin Dashboard
-- [ ] Create `src/views/admin/` directory and `dashboard.ejs` view
+- [X] Create `src/views/admin/` directory and `dashboard.ejs` view
 - [ ] Wire `/admin` route to `dashboardController.showDashboard`
 - [ ] Complete `showClients` handler in `dashboardController.js`
 - [ ] Write admin dashboard model queries in `dashboardModel.js` (currently empty)

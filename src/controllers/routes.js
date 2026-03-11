@@ -3,7 +3,7 @@ import { homePage, aboutPage } from './index.js';
 import registrationRoutes from './forms/registration.js';
 import loginRoutes from './forms/login.js';
 import { processLogout, showDashboard } from './forms/login.js';
-import { requireLogin, requireRole, requireAdmin } from '../middleware/auth.js';
+import { requireLogin, requireRole } from '../middleware/auth.js';
 
 const router = Router();
 
@@ -30,12 +30,14 @@ router.use('/login', loginRoutes);
 
 //Authentication results
 router.get('/logout', processLogout);
-router.get('/dashboard', requireLogin, requireRole, showDashboard);
+
+// Client Routes
+router.get('/client/dashboard', requireLogin, requireRole('client'), showDashboard);
 
 // Admin Routes
-router.get('/admin', requireLogin, requireAdmin);
-router.get('/admin/users', requireAdmin);
-router.get('/admin/projects', requireAdmin);
-router.get('/admin/settings', requireAdmin);
+router.get('/admin', requireLogin, requireRole('admin'));
+router.get('/admin/users', requireRole('admin'));
+router.get('/admin/projects', requireRole('admin'));
+router.get('/admin/settings', requireRole('admin'));
 
 export default router;
