@@ -4,11 +4,11 @@ const getAllUpdates = async () => {
     const query = `
         SELECT
             id,
-            project_id,
-            milestone_id,
+            project_id AS "projectId",
+            milestone_id AS "milestoneId",
             title,
             body,
-            approval_status
+            approval_status AS "approvalStatus"
         FROM updates
         ORDER BY title
     `;
@@ -22,7 +22,7 @@ const getUpdateById = async (id) => {
         SELECT
             id,
             title,
-            body,
+            body
         FROM updates
         WHERE updates.id = $1
     `;
@@ -45,7 +45,7 @@ const createUpdate = async (title, body, requires_approval) => {
     return result.rows[0] || null;
 }
 
-const updateUpdate = async (id, approval_status, approval_comment, approved_by) => {
+const approveUpdate = async (id, approval_status, approval_comment, approved_by) => {
     const query = `
         UPDATE updates
         SET
@@ -63,4 +63,92 @@ const updateUpdate = async (id, approval_status, approval_comment, approved_by) 
     `;
 
     const result = await db.query(query, [approval_status, approval_comment, approved_by, id]);
+    return result.rows[0] || null;
 }
+
+const removeUpdate = async (id) => {
+    const query = `
+        DELETE FROM updates
+        WHERE
+            id = $1
+        RETURNING
+            id
+    `;
+
+    const result = await db.query(query, [id]);
+    return result.rows[0] || null;
+}
+
+const getPendingApprovalsForUser = async (userId) => {
+    const query = `
+        SELECT 
+            updates.id,
+            updates.project_id AS "projectId",
+            updates.title,
+            updates.approval_status AS "approvalStatus"
+        FROM updates
+        INNER JOIN project_users
+            ON updates.project_id = project_users.project_id
+        WHERE
+            project_users.user_id = $1
+            AND project_users.permission_level = 'approver'
+            AND updates.require_approval = true
+            AND updates.approval_status = 'pending'
+    `;
+
+    const result = await db.query(query, [userId]);
+    return result.rows;
+}
+
+const getApproved = async (userId) => {
+    const query = `
+        SELECT 
+            updates.id,
+            updates.project_id AS "projectId",
+            updates.title,
+            updates.approval_status AS "approvalStatus"
+        FROM updates
+        INNER JOIN project_users
+            ON updates.project_id = project_users.project_id
+        WHERE
+            project_users.user_id = $1
+            AND project_users.permission_level = 'approver'
+            AND updates.require_approval = true
+            AND updates.approval_status = 'approved'
+    `;
+
+    const result = await db.query(query, [userId]);
+    return result.rows;
+}
+
+const getRejected = async (userId) => {
+    const query = `
+        SELECT 
+            updates.id,
+            updates.project_id AS "projectId",
+            updates.title,
+            updates.approval_status AS "approvalStatus"
+        FROM updates
+        INNER JOIN project_users
+            ON updates.project_id = project_users.project_id
+        WHERE
+            project_users.user_id = $1
+            AND project_users.permission_level = 'approver'
+            AND updates.require_approval = true
+            AND updates.approval_status = 'rejected'
+    `;
+
+    const result = await db.query(query, [userId]);
+    return result.rows;
+}
+
+export {
+    getAllUpdates,
+    getUpdateById,
+    createUpdate,
+    approveUpdate,
+    removeUpdate,
+    getPendingApprovalsForUser,
+    getApproved,
+    getRejected
+};

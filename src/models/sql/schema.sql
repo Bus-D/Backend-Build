@@ -25,7 +25,8 @@ CREATE TABLE project_users (
     id SERIAL PRIMARY KEY,
     project_id INTEGER REFERENCES projects(id) ON DELETE CASCADE,
     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-    permission_level VARCHAR(20) CHECK (permission_level IN ('viewer', 'approver')),
+    permission_level VARCHAR(20) NOT NULL
+        CHECK (permission_level IN ('viewer', 'approver')),
     UNIQUE(project_id, user_id)
 );
 
@@ -45,14 +46,16 @@ CREATE TABLE updates (
     project_id INTEGER REFERENCES projects(id) ON DELETE CASCADE,
     milestone_id INTEGER REFERENCES milestones(id) ON DELETE SET NULL,
     title VARCHAR(255) NOT NULL,
+    update_type VARCHAR(20) DEFAULT 'progress'
+        CHECK (update_type IN ('progress, deliverable, not, approval_request')),
     body TEXT,
     requires_approval BOOLEAN DEFAULT false,
     approval_status VARCHAR(20) DEFAULT 'pending'
         CHECK (approval_status IN ('pending','approved','rejected')),
     approval_comment TEXT,
-    approved_by INTEGER REFERENCES users(id),
+    approved_by INTEGER NOT NULL REFERENCES users(id) ON DELETE SET NULL,
     approved_at TIMESTAMP,
-    created_by INTEGER REFERENCES users(id),
+    created_by INTEGER NOT NULL REFERENCES users(id),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
