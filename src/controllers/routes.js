@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { homePage, aboutPage } from './index.js';
 import registrationRoutes from './forms/registration.js';
 import loginRoutes from './forms/login.js';
-import { processLogout } from './forms/login.js';
+import { showLoginForm, processLogin, processLogout } from './forms/login.js';
 import { requireLogin, requireRole } from '../middleware/auth.js';
 import { showDashboard } from '../controllers/dashboard/dashboard.js';
 

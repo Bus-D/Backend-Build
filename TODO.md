@@ -78,9 +78,9 @@
 - [X] add global error handler
 
 ## Basic Dashboards
-- [ ] create admin dashboard route + view
-- [ ] create client dashboard route + view
-- [ ] role-base redirect
+- [X] create admin dashboard route + view
+- [X] create client dashboard route + view
+- [X] role-base redirect
 
 ## Later tasks
 - [ ] add validation to contact form
@@ -107,18 +107,18 @@
     - [X] get all clients / users
 
 ### Client Dashboard
-- [ ] Add `/client` route in `routes.js` with `requireLogin`
-- [ ] Create client dashboard controller
-- [ ] Create `src/views/client/dashboard.ejs` view
-- [ ] Write client dashboard model queries
-    - [ ] get projects assigned to current user
+- [X] Add `/client` route in `routes.js` with `requireLogin`
+- [X] Create client dashboard controller
+- [X] Create `src/views/client/dashboard.ejs` view
+- [X] Write client dashboard model queries
+    - [X] get projects assigned to current user
     - [ ] get milestones by project
     - [ ] get updates by project
 
 ### Role-Based Redirect (Full Flow)
-- [ ] Confirm `/admin` route renders view correctly after login
-- [ ] Confirm `/client` route renders view correctly after login
-- [ ] Mark off `role-base redirect` in Basic Dashboards above once both routes work
+- [X] Confirm `/admin` route renders view correctly after login
+- [X] Confirm `/client` route renders view correctly after login
+- [X] Mark off `role-base redirect` in Basic Dashboards above once both routes work
 
 ### Project Views
 - [ ] Create `src/views/projects/list.ejs`

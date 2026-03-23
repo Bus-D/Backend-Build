@@ -45,11 +45,10 @@ const processLogin = async (req, res) => {
 
         req.session.user = foundUser;
 
-        if (req.session.user.role === 'admin') {
-            return res.redirect(`${user.role}/dashboard`);
-        }
+        console.log('Login attempt:', req.body);
 
-        return res.redirect(`${user.role}/dashboard`);
+        return res.redirect(`/${foundUser.role}/dashboard`);
+
     } catch(error) {
         console.error('Login error', error);
         req.flash('error', 'An error occured when logging in. Please try again');
@@ -88,4 +87,4 @@ router.post('/', processLogin);
 
 
 export default router;
-export { processLogout };
+export { showLoginForm, processLogin, processLogout };
