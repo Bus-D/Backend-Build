@@ -46,10 +46,10 @@ const processLogin = async (req, res) => {
         req.session.user = foundUser;
 
         if (req.session.user.role === 'admin') {
-            return res.redirect('/admin');
+            return res.redirect(`${user.role}/dashboard`);
         }
 
-        return res.redirect('/client');
+        return res.redirect(`${user.role}/dashboard`);
     } catch(error) {
         console.error('Login error', error);
         req.flash('error', 'An error occured when logging in. Please try again');
@@ -83,46 +83,9 @@ const processLogout = (req, res) => {
     })
 }
 
-const showDashboard = (req, res) => {
-
-    const user = req.session.user;
-    const sessionData = req.session;
-
-    if (!req.session.user) {
-        req.flash('error', 'You must log in first');
-        return res.redirect('/login');
-    }
-
-    // Check for password in session data
-    if (user && user.password) {
-        console.error('Security Error: Password found in user object');
-        delete user.password;
-    }
-    if (sessionData.user && sessionData.user.password) {
-        console.error('Security Error: password found in session object');
-        delete sessionData.user.password;
-    }
-
-    if (user.role === 'admin') {
-        return res.render('admin/dashboard', {
-            title: 'Admin Dashboard',
-            sessionData,
-            user
-        });
-    }
-
-    res.render('client/dashboard', {
-        title: 'Client Dashboard',
-        sessionData,
-        user
-    });
-}
-
 router.get('/', showLoginForm);
 router.post('/', processLogin);
-router.get('/admin', showDashboard);
-router.get('/client', showDashboard);
 
 
 export default router;
-export { processLogout, showDashboard };
+export { processLogout };

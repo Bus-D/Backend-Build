@@ -1,231 +1,147 @@
-/* ---------- Header ---------- */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border-color);
-  padding: 0.5rem 2rem;
-  z-index: 99;
-  display: flex;
-  flex-direction: column;
-}
-
-.header-top {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  height: 50px;
-  width: 50px;
-}
-
-.nav-links {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  max-height: 0;
-  overflow: hidden;
-  width: 100%;
-  transition: max-height 0.4s ease-in-out;
-}
-
-.nav-links.show {
-  max-height: 400px;
-}
-
-.menu-btn {
-  display: inline-block;
-  cursor: pointer;
-}
-
-.bar1, .bar2, .bar3 {
-  width: 35px;
-  height: 5px;
-  background-color: #333;
-  margin: 6px 0;
-  transition: 0.4s;
-}
-
-.change .bar1 {
-  transform: translate(0, 11px) rotate(-45deg);
-}
-
-.change .bar2 {
-  opacity: 0;
-}
-
-.change .bar3 {
-  transform: translate(0, -11px) rotate(45deg);
-}
-
-nav a {
-  text-decoration: none;
-  color: var(--text-color);
-  font-weight: 500;
-  font-size: 1rem;
-  padding: 0.4em 0.8em;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-}
-
-nav a:hover,
-nav a.active {
-  background: var(--accent-color);
-  color: black;
-}
-
-nav .order-button {
-  background: var(--primary-color)!important;
-  color: white!important;
-}
-
-.order-button {
-  background: var(--primary-color);
-  color: white;
-  font-weight: 600;
-  font-size: 1rem;
-  border-radius: 6px;
-  padding: 0.5em 1em;
-  transition: 0.3s ease;
-}
-
-.order-button:hover {
-  background: var(--accent-color);
-}
-
-.offer {
-  width: fit-content;
-  margin: 60px auto 0 auto;
-}
-
-main {
-  margin-top: 40px;
-}
-
-/* Home Page */
-.home-intro {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: left;
-  margin: 0 auto;
-}
-
-/* ---------- About Page ---------- */
-.about-content {
-  width: 90%;
-  margin: 0 auto;
-}
-
-/* ---------- Services Page ---------- */
-.services-intro {
-  margin: 0 auto;
-  width: 90%;
-}
-
-/* ---------- Contact Page ---------- */
-.contact-section {
-  width: fit-content;
-  margin: 0 auto;
-}
-
-.contact-intro {
-  width: 90%;
-  margin: 40px auto 0 auto;
-
-}
-
-/* ---------- Footer ---------- */
-footer {
- 
-  width: 100%;
-  margin: 0 auto;
-  padding: 3rem 1rem;
-  border-top: 1px solid var(--border-color);
-  background: var(--surface);
-}
-
-.footer-content {
-   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: top;
-  width: 90%;
-  margin: 0 auto;
-}
-
-.site-links {
-  display: flex;
-  flex-direction: column;
-}
-
-footer p {
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-}
-
-footer a {
-  color: var(--primary-color);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-footer a:hover {
-  color: var(--accent-color);
-}
-
-/* .social-links {
-  margin-top: 1rem;
-} */
-
-footer img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  margin: 0.5rem;
-  transition: transform 0.3s;
-}
-
-footer img:hover {
-  transform: scale(1.05);
-}
-
-/* ---------- Responsive Layout ---------- */
-@media (min-width: 800px) {
-  header {
-    flex-direction: row;
-    align-items: center;
+header { 
     justify-content: space-between;
-    padding: 0.5rem 2rem;
-  }
-
-  .header-top {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex: 1;
-    margin-bottom: 40p
-  }
+    width: 100%; 
+    background: var(--surface); 
+    border-bottom: 1px solid var(--border-color); 
+}
+    .header-top { 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 2rem;
+        gap: 1rem;
+    }
 
-  .nav-links {
-    flex-direction: row;
-    gap: 2rem;
-    max-height: none;
-    overflow: visible;
-    margin: 0;
-    align-items: center;
-    margin-left: auto;
-    width: auto;
-  }
+    .logo-link {
+        display: inline-flex;
+        align-items: center;
+    }
 
-  .menu-btn {
-    display: none;
-  }
+    .logo {
+        width: 145px;
+        height: auto;
+        display: block;
+    }
+
+    .menu-btn {
+        cursor: pointer;
+        display: inline-flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: 0.35rem;
+    }
+
+    .bar1,
+    .bar2,
+    .bar3 {
+        width: 22px;
+        height: 2px;
+        background: var(--text-color);
+        transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .menu-btn.change .bar1 {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-btn.change .bar2 {
+        opacity: 0;
+    }
+
+    .menu-btn.change .bar3 {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .nav-links { display: flex; 
+        flex-direction: column; 
+        gap: 1.5rem; 
+        max-height: 0; 
+        overflow: hidden; 
+        transition: max-height 0.4s ease;
+        padding: 0 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .nav-links a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: var(--primary-color);
+    }
+
+    .nav-links.show { 
+        max-height: 400px; 
+        padding-bottom: 1rem;
+    }
+
+    footer { 
+        padding: 3rem 1rem; 
+        border-top: 1px solid var(--border-color); 
+        background: var(--surface); 
+    }
+    .footer-content { 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: flex-start;
+        gap: 2rem;
+        flex-wrap: wrap;
+        width: 90%; 
+        margin: 0 auto; 
+    }
+
+    .site-links,
+    .social-links,
+    .legal {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .site-links a,
+    .legal a {
+        color: var(--text-color);
+        text-decoration: none;
+    }
+
+    .site-links a:hover,
+    .legal a:hover {
+        color: var(--primary-color);
+    }
+
+    .social-links img {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+/* Global Layout Containers */
+main { 
+    margin-top: 40px; 
+}
+.section-container { 
+    width: 90%; 
+    margin: 0 auto; 
+} /* Use this class for .about-content, .services-intro, etc. */
+
+@media (min-width: 800px) {
+    .nav-links { 
+        flex-direction: row; 
+        max-height: none; 
+        align-items: center;
+        padding: 0 2rem 0.6rem;
+        margin-bottom: 0;
+    }
+    .menu-btn { 
+        display: none; 
+    }
+
+    .footer-content {
+        flex-wrap: nowrap;
+    }
 }

@@ -1,140 +1,100 @@
-/* ---------- Hero ---------- */
-.hero {
-  max-width: 900px;
-  margin: 5rem auto 3rem;
-  text-align: center;
-  padding: 2rem;
+/* Buttons */
+.order-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    padding: 0.5em 1em;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+.order-button:hover { background: var(--accent-color); color: black; }
+
+.btn,
+button[type="submit"] {
+    background: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+    border: 0;
+    border-radius: 8px;
+    padding: 0.8rem 1.1rem;
+    cursor: pointer;
+    transition: background 0.25s ease;
 }
 
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+.btn:hover,
+button[type="submit"]:hover {
+    background: #167353;
 }
 
-.hero h2 {
-  font-size: 1.25rem;
-  color: var(--muted-text);
-  margin-bottom: 1rem;
+.return-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    text-decoration: none;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
 }
 
-.hero a {
-  text-decoration: none;
-  margin-top: 2rem;
+.return-btn:hover {
+    background: #167353;
 }
 
-/* ---------- Home Intro Button ---------- */
-.home-intro > .order-button {
-  text-decoration: none;
+/* Global flash states rendered in header partial */
+.flash-messages {
+    width: min(960px, 92%);
+    margin: 1.25rem auto 0;
+    display: grid;
+    gap: 0.6rem;
 }
 
-/* ---------- Cards / Blocks ---------- */
-.home-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 3rem;
-  padding: 2rem 5%;
-  text-align: center;
+.flash {
+    border-radius: 10px;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid transparent;
 }
 
-.home-grid section {
-  background: var(--surface);
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease;
+.flash.success {
+    background: #ecfbf2;
+    border-color: #b8e7c7;
+    color: #105437;
 }
 
-.home-grid section:hover {
-  transform: translateY(-4px);
+.flash.error,
+.flash.danger {
+    background: #fff3f3;
+    border-color: #f0c2c2;
+    color: #7a2020;
 }
 
-.home-grid img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 1rem;
+.flash.info {
+    background: #f2f7ff;
+    border-color: #c6d6f2;
+    color: #1e3e70;
 }
 
-figcaption {
-  color: var(--muted-text);
-  font-size: 0.9rem;
+.flash.warning {
+    background: #fff9eb;
+    border-color: #f3dca7;
+    color: #775400;
 }
 
-/* ---------- Slideshow ---------- */
-.slideshow-container {
-  max-width: 1000px;
-  margin: 2rem auto;
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
+/* Grid System (Used in Home & Services) */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    padding: 2rem 5%;
 }
 
-.mySlides {
-  display: none;
+.card-item {
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
 }
-
-.mySlides img {
-  width: 100%;
-  border-radius: 12px;
-}
-
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  padding: 1rem;
-  margin-top: -22px;
-  color: white;
-  font-size: 1.5rem;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 50%;
-  transition: background 0.3s;
-}
-
-.next {
-  right: 0;
-}
-
-.prev:hover,
-.next:hover {
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.dots {
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.dot {
-  cursor: pointer;
-  height: 12px;
-  width: 12px;
-  margin: 0 3px;
-  background-color: #ccc;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.3s;
-}
-
-.dot.active,
-.dot:hover {
-  background-color: var(--accent-color);
-}
-
-.numbertext {
-  position: absolute;
-  top: 8px;
-  left: 10px;
-  font-size: 0.8rem;
-  color: #fff;
-  background: rgba(0,0,0,0.5);
-  padding: 4px 6px;
-  border-radius: 4px;
-}
-
-/* ---------- Responsive for Components ---------- */
-@media (max-width: 800px) {
-  .home-grid {
-    grid-template-columns: 1fr;
-  }
-}
+.card-item:hover { transform: translateY(-4px); }

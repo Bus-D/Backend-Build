@@ -1,9 +1,25 @@
 import { getAllUsers } from '../../models/projects/userModels.js';
-import { getAllProjects, getProjectsByUser } from '../../models/projects/projectModel.js';
+import { getAllProjects, getProjectsByUser } from '../../models/projects/projectModels.js';
 
 export const showDashboard = async (req, res) => {
 try {
         const user = req.session.user;
+        const sessionData = req.session;
+
+        if (!req.session.user) {
+            req.flash('error', 'You must log in first');
+            return res.redirect('/login');
+        }
+
+        // Check for password in session data
+        if (user && user.password) {
+            console.error('Security Error: Password found in user object');
+            delete user.password;
+        }
+        if (sessionData.user && sessionData.user.password) {
+            console.error('Security Error: password found in session object');
+            delete sessionData.user.password;
+        }
 
         const project = user.role === 'admin'
             ? await getAllProjects()

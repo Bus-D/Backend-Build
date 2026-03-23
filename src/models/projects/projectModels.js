@@ -1,4 +1,4 @@
-import { db } from '../db.js'
+import db from '../db.js'
 
 const getAllProjects = async () => {
     const query = `
@@ -6,8 +6,9 @@ const getAllProjects = async () => {
             id,
             name,
             description,
-            progress_percentage,
-            status
+            progress_percentage AS "progress",
+            status,
+            deadline
         FROM projects
         ORDER BY name
     `;

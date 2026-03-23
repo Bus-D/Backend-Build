@@ -1,72 +1,54 @@
-/* ---------- Home Portfolio Grid ---------- */
-
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.5rem;
-  padding: 3rem 5%;
+.portfolio-hero { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    width: min(1100px, 92%);
+    margin: 2rem auto 1rem;
 }
 
-.portfolio-item {
-  background: var(--surface);
-  border-radius: 14px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.portfolio-item:hover {
-  transform: translateY(-6px);
-}
-
-.portfolio-item a {
-  text-decoration: none;;
-}
-
-.portfolio-item img {
-  width: 100%;
-  display: block;
-}
-
-.portfolio-item h3 {
-  padding: 1rem;
-  font-family: var(--heading-font);
-  font-size: 1.4rem;
-  color: var(--primary-color);
-}
-
-/* ---------- Case Study Flow ---------- */
-.portfolio-hero {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  margin: 0 auto;
-}
 .portfolio-hero img {
-  height: 40%;
-  width: 50%;
-  margin: 0 auto;
+    width: min(100%, 880px);
+    border-radius: 12px;
 }
 
-.portfolio-flow {
-  width: 90%;
-  margin: 0 auto;
-  margin-top: 2rem;
+.portfolio-flow { 
+    width: min(1100px, 92%);
+    margin: 1rem auto 3rem;
+    display: grid;
+    gap: 1rem;
 }
 
-.takeaway {
-  margin-bottom: 2rem;
+.introduction,
+.discover,
+.design,
+.final,
+.portfolio-grid {
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
 }
 
-.design-imgs {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+.design-imgs { 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 0.8rem;
+    margin: 0.75rem 0;
 }
 
 .design-imgs img {
-  width: 150px;
-  height:fit-content;
-  justify-self: center;
-  margin-bottom: 3rem;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.takeaway {
+    padding-left: 1.2rem;
+}
+
+.portfolio-grid {
+    width: min(760px, 92%);
+    margin: 2rem auto;
+    text-align: center;
 }

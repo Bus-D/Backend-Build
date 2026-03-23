@@ -2,14 +2,15 @@ import { Router } from 'express';
 import { homePage, aboutPage } from './index.js';
 import registrationRoutes from './forms/registration.js';
 import loginRoutes from './forms/login.js';
-import { processLogout, showDashboard } from './forms/login.js';
+import { processLogout } from './forms/login.js';
 import { requireLogin, requireRole } from '../middleware/auth.js';
+import { showDashboard } from '../controllers/dashboard/dashboard.js';
 
 const router = Router();
 
 // Dynamic Loading
 router.use('/', (req, res, next) => {
-    res.addStyle('<link rel="stylesheet" href="/css/styles.css">');
+    res.addStyle('<link rel="stylesheet" href="/css/main.css">');
     next();
 });
 

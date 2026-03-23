@@ -1,73 +1,55 @@
-/* ---------- Root Variables ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Inter:wght@300;400;600&display=swap');
+@import url('https://use.typekit.net/mwz1faa.css');
+
 :root {
-  --primary-color: #1e8f68;
-  --accent-color: #a9e5bb;
-  --text-color: #181818;
-  --light-gray: #bfc7c2;
-  --muted-text: #666;
-  --background: #fafafa;
-  --surface: #fff;
-  --border-color: #e5e5e5;
-
---heading-font: "neue-haas-grotesk-display", "neue-haas-grotesk-text", Helvetica, Arial, sans-serif;
---body-font: "neue-haas-grotesk-text", Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-
+    --primary-color: #1e8f68;
+    --accent-color: #a9e5bb;
+    --text-color: #181818;
+    --light-gray: #bfc7c2;
+    --muted-text: #666;
+    --background: #fafafa;
+    --surface: #fff;
+    --border-color: #e5e5e5;
+    --heading-font: "neue-haas-grotesk-display", "neue-haas-grotesk-text", Helvetica, Arial, sans-serif;
+    --body-font: "neue-haas-grotesk-text", Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* ---------- Global Reset ---------- */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
 }
 
 body {
-  font-family: var(--body-font);
-  background: var(--background);
-  color: var(--text-color);
-  line-height: 1.7;
-  padding-top: 60px;
+    font-family: var(--body-font);
+    background: var(--background);
+    color: var(--text-color);
+    line-height: 1.7;
 }
 
-/* ---------- Typography ---------- */
-h1, h2, h3, h4, h5, h6 {
-  color: var(--primary-color);
+/* Typography */
+h1, h2, h3, h4, h5, h6 { 
+    color: var(--primary-color); 
+}
+h1, h2 { 
+    font-family: var(--heading-font); 
+    font-weight: 600; 
+    letter-spacing: -0.02em; 
+    line-height: 1.15; 
+}
+p { 
+    font-size: 1.05rem; 
+    margin-bottom: 1em; 
 }
 
-h1,
-h2 {
-  font-family: "neue-haas-grotesk-display", "neue-haas-grotesk-text", Helvetica, Arial, sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+a {
+    color: var(--primary-color);
 }
 
-h3 {
-  font-family: "neue-haas-grotesk-text", Helvetica, Arial, sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.25;
+a:hover {
+    color: #167353;
 }
 
-h4,
-h5,
-h6 {
-  font-family: "neue-haas-grotesk-text", Helvetica, Arial, sans-serif;
-  font-weight: 500;
-  letter-spacing: -0.005em;
-  line-height: 1.35;
-}
-
-
-p {
-  font-size: 1.05rem;
-  color: var(--text-color);
-  margin-bottom: 1em;
-}
-
-@media (min-width: 900px) {
-  h1,
-  h2 {
-    letter-spacing: -0.025em;
-  }
+.muted {
+    color: var(--muted-text);
 }
