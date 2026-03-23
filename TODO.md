@@ -100,11 +100,11 @@
 
 ### Admin Dashboard
 - [X] Create `src/views/admin/` directory and `dashboard.ejs` view
-- [ ] Wire `/admin` route to `dashboardController.showDashboard`
-- [ ] Complete `showClients` handler in `dashboardController.js`
-- [ ] Write admin dashboard model queries in `dashboardModel.js` (currently empty)
-    - [ ] get all projects with status summary
-    - [ ] get all clients / users
+- [X] Wire `/admin` route to `dashboardController.showDashboard`
+- [X] Complete `showClients` handler in `dashboardController.js`
+- [X] Write admin dashboard model queries in `dashboardModel.js` (currently empty)
+    - [X] get all projects with status summary
+    - [X] get all clients / users
 
 ### Client Dashboard
 - [ ] Add `/client` route in `routes.js` with `requireLogin`
