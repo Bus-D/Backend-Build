@@ -42,6 +42,7 @@ try {
 
             res.render(view, {
                 title: `${user.name} Dashboard`,
+                user: user,
                 projects: projectPreview,
                 clients: clientPreview
             });

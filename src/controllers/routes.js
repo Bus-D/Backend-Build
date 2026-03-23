@@ -37,6 +37,7 @@ router.get('/client/dashboard', requireLogin, requireRole('client'), showDashboa
 
 // Admin Routes
 router.get('/admin', requireLogin, requireRole('admin'));
+router.get('/admin/dashboard', showDashboard);
 router.get('/admin/users', requireRole('admin'));
 router.get('/admin/projects', requireRole('admin'));
 router.get('/admin/settings', requireRole('admin'));

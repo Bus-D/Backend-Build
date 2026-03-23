@@ -1,0 +1,47 @@
+<%- include('../partials/header') %>
+
+<main class="section-container">
+        <section class="hero">
+            <h1>Admin Dashboard</h1>
+            <h2>Welcome back, <%= user.name %></h2>
+        </section>
+
+        <div class="home-intro">
+            <h3>Overview</h3>
+            <p class="muted">Manage your active projects and client base from this central hub.</p>
+        </div>
+
+        <section class="home-grid">
+            <div class="home-intro" style="grid-column: 1 / -1; margin-bottom: 0;">
+                <h3>Recent Projects</h3>
+            </div>
+            <% projects.forEach(project => { %>
+                <section class="card-item">
+                    <h3><%= project.name %></h3>
+                    <p>Status: <strong><%= project.status %></strong></p>
+                    <p class="muted">Progress: <%= project.progress %>%</p>
+                    <a href="/projects/<%= project.id %>" class="order-button">View Details</a>
+                </section>
+            <% }) %>
+        </section>
+
+        <section class="home-grid">
+            <div class="home-intro" style="grid-column: 1 / -1; margin-bottom: 0;">
+                <h3>Recent Clients</h3>
+            </div>
+            <% clients.forEach(client => { %>
+                <section class="card-item">
+                    <h3><%= client.name %></h3>
+                    <p class="muted">Role: <%= client.role %></p>
+                    <a href="/admin/users/<%= client.id %>" class="order-button">Manage User</a>
+                </section>
+            <% }) %>
+        </section>
+
+        <div class="form-footer">
+            <a href="/projects" class="btn">View All Projects</a>
+            <a href="/admin/users" class="btn">View All Clients</a>
+        </div>
+    </main>
+
+<%- include('../partials/footer') %>
