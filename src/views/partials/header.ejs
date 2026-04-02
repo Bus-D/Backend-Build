@@ -75,8 +75,10 @@
     <% } %>
 
     <!-- CSS + JS -->
-    <%-  renderStyles() %>
-    <%- renderScripts() %>
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/script/main.js" defer></script>
+    <script src="/script/form.js" defer></script>
+    <script src="/script/dashboard.js" defer></script>
     
     <title><%- title %></title>
 </head>
@@ -94,7 +96,7 @@
                 <div class="bar3"></div>
             </div>
         </div>
-    
+
         <nav class="nav-links">
             <a href="/">Home</a>
             <a href="forms/contact">Contact</a>
@@ -102,9 +104,12 @@
                 <a href="/login">Login</a>
             <% } %>
             <% if (isLoggedIn) { %>
+                <a href="/<%= user.role %>/dashboard">Dashboard</a>
                 <a href="/logout">Logout</a>
             <% } %>
-            <a href="forms/contact" class="order-button">Get a Quote</a>
+            <% if (!isLoggedIn) { %>
+                <a href="forms/contact" class="order-button">Get a Quote</a>
+            <% } %>
         </nav>
     </header>
 

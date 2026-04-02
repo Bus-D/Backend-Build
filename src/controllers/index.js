@@ -1,5 +1,6 @@
 const homePage = (req, res) => {
-    res.render('home', {title: 'Bus-D Designs'});
+    const user = req.session.user;
+    res.render('home', {title: 'Bus-D Designs', user});
 };
 
 const aboutPage = (req, res) => {
