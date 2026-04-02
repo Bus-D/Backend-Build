@@ -75,10 +75,11 @@
     <% } %>
 
     <!-- CSS + JS -->
-    <link rel="stylesheet" href="/css/main.css">
+     <%- renderStyles() %>
+    <!-- <link rel="stylesheet" href="/css/main.css">
     <script src="/script/main.js" defer></script>
     <script src="/script/form.js" defer></script>
-    <script src="/script/dashboard.js" defer></script>
+    <script src="/script/dashboard.js" defer></script> -->
     
     <title><%- title %></title>
 </head>
@@ -98,13 +99,17 @@
         </div>
 
         <nav class="nav-links">
-            <a href="/">Home</a>
-            <a href="forms/contact">Contact</a>
             <% if (!isLoggedIn) { %>
+                <a href="/">Home</a>
+                <a href="forms/contact">Contact</a>
                 <a href="/login">Login</a>
             <% } %>
             <% if (isLoggedIn) { %>
                 <a href="/<%= user.role %>/dashboard">Dashboard</a>
+                <a href="/<%= user.role%>/projects">Projects</a>
+                <% if (user.role === "admin") { %>
+                    <a href="/admin/clients">Clients</a>
+                <% } %>
                 <a href="/logout">Logout</a>
             <% } %>
             <% if (!isLoggedIn) { %>

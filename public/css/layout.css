@@ -80,8 +80,8 @@ header {
                 color: var(--primary-color);
             }
 
-            /* ✅ FIXED VERSION */
-            &:last-of-type {
+            .order-button {
+                background-color: var(--primary-color);
                 color: white;
                 font-weight: 600;
             }

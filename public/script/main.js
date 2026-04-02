@@ -12,7 +12,7 @@ function menuToggle() {
   })
 }
 
-export function loadHeader() {
+function loadHeader() {
   // Highlight active page
   const currentPage = window.location.pathname.split("/").pop();
   document
@@ -23,3 +23,5 @@ export function loadHeader() {
       }
     });
 }
+
+loadHeader();

@@ -6,6 +6,15 @@ A full-stack freelance project management and client portal built with Node.js, 
 **Status:** Active Development  
 **License:** ISC
 
+dummy accounts
+Admin:
+Admin@admin.com
+test1234!
+
+Client
+client@client.com
+test1234!
+
 ---
 
 ## 📋 Table of Contents

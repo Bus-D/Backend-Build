@@ -1,13 +1,13 @@
 /* Core */
-@import "base.css";
-@import "layout.css";
+@import "./base.css";
+@import "./layout.css";
 
 /* Shared Features */
-@import "components.css";
+@import "./components.css";
 
 /* Page Specifics */
-@import "home.css";
-@import "dashboard.css";
-@import "portfolio.css";
-@import "contact.css";
-@import "faq.css";
+@import "./home.css";
+@import "./dashboard.css";
+@import "./portfolio.css";
+@import "./contact.css";
+@import "./faq.css";
