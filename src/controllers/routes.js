@@ -5,12 +5,13 @@ import loginRoutes from './forms/login.js';
 import { processLogout } from './forms/login.js';
 import { requireLogin, requireRole } from '../middleware/auth.js';
 import { showDashboard } from '../controllers/dashboard/dashboard.js';
+import { createProject, createCaseStudyPage, showCaseStudy, showProjectDetails } from './projects/project-details.js';
 
 const router = Router();
 
 // Dynamic Loading
 router.use('/', (req, res, next) => {
-    res.addStyle('<link rel="stylesheet" href="/css/main.css">');
+    res.addStyle('<link rel="stylesheet" href="/css/main.css">')
     next();
 });
 
@@ -40,9 +41,15 @@ router.get('/client/dashboard', requireLogin, requireRole('client'), showDashboa
 
 // Admin Routes
 router.get('/admin', requireLogin, requireRole('admin'));
-router.get('/admin/dashboard', showDashboard);
+router.get('/admin/dashboard', requireLogin, requireRole('admin'), showDashboard);
+router.post('/admin/projects/create', requireLogin, requireRole('admin'), createProject);
+router.post('/admin/case-studies/create', requireLogin, requireRole('admin'), createCaseStudyPage);
 router.get('/admin/users', requireRole('admin'));
 router.get('/admin/projects', requireRole('admin'));
 router.get('/admin/settings', requireRole('admin'));
+
+// Project Routes
+router.get('/projects/case-study/:slug', showCaseStudy);
+router.get('/projects/:id', requireLogin, showProjectDetails);
 
 export default router;

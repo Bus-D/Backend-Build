@@ -58,7 +58,10 @@ const getProjectsByUser = async (userId) => {
         SELECT
             projects.id,
             projects.name,
+            projects.description,
             projects.status,
+            projects.progress_percentage AS "progress",
+            projects.deadline,
             project_users.permission_level AS "permissions"
         FROM projects
         INNER JOIN project_users

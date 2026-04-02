@@ -1,11 +1,11 @@
-header { 
-    justify-content: space-between;
+header {
     display: flex;
-    width: 100%; 
-    background: var(--surface); 
-    border-bottom: 1px solid var(--border-color); 
-}
-    .header-top { 
+    justify-content: space-between;
+    width: 100%;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border-color);
+
+    .header-top {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -30,68 +30,78 @@ header {
         flex-direction: column;
         gap: 5px;
         padding: 0.35rem;
+
+        &.change {
+            .bar1 {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .bar2 {
+                opacity: 0;
+            }
+
+            .bar3 {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+        }
+
+        .bar1,
+        .bar2,
+        .bar3 {
+            width: 22px;
+            height: 2px;
+            background: var(--text-color);
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
     }
 
-    .bar1,
-    .bar2,
-    .bar3 {
-        width: 22px;
-        height: 2px;
-        background: var(--text-color);
-        transition: transform 0.25s ease, opacity 0.25s ease;
-    }
-
-    .menu-btn.change .bar1 {
-        transform: translateY(7px) rotate(45deg);
-    }
-
-    .menu-btn.change .bar2 {
-        opacity: 0;
-    }
-
-    .menu-btn.change .bar3 {
-        transform: translateY(-7px) rotate(-45deg);
-    }
-
-    .nav-links { display: flex; 
-        flex-direction: column; 
-        gap: 1.5rem; 
-        max-height: 0; 
-        overflow: hidden; 
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        max-height: 0;
+        overflow: hidden;
         transition: max-height 0.4s ease;
         padding: 0 2rem;
         margin-bottom: 0.5rem;
-    }
 
-    .nav-links a {
-        color: var(--text-color);
-        text-decoration: none;
-        font-weight: 500;
-    }
+        &.show {
+            max-height: 400px;
+            padding-bottom: 1rem;
+        }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-        color: var(--primary-color);
-    }
+        a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
 
-    .nav-links.show { 
-        max-height: 400px; 
-        padding-bottom: 1rem;
-    }
+            &:hover,
+            &.active {
+                color: var(--primary-color);
+            }
 
-    footer { 
-        padding: 3rem 1rem; 
-        border-top: 1px solid var(--border-color); 
-        background: var(--surface); 
+            /* ✅ FIXED VERSION */
+            &:last-of-type {
+                color: white;
+                font-weight: 600;
+            }
+        }
     }
-    .footer-content { 
-        display: flex; 
-        justify-content: space-between; 
+}
+
+footer {
+    padding: 3rem 1rem;
+    border-top: 1px solid var(--border-color);
+    background: var(--surface);
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
         align-items: flex-start;
         gap: 2rem;
         flex-wrap: wrap;
-        width: 90%; 
-        margin: 0 auto; 
+        width: 90%;
+        margin: 0 auto;
     }
 
     .site-links,
@@ -106,11 +116,10 @@ header {
     .legal a {
         color: var(--text-color);
         text-decoration: none;
-    }
 
-    .site-links a:hover,
-    .legal a:hover {
-        color: var(--primary-color);
+        &:hover {
+            color: var(--primary-color);
+        }
     }
 
     .social-links img {
@@ -119,29 +128,36 @@ header {
         border-radius: 50%;
         object-fit: cover;
     }
-
-/* Global Layout Containers */
-main { 
-    margin-top: 40px; 
 }
-.section-container { 
-    width: 90%; 
-    margin: 0 auto; 
-} /* Use this class for .about-content, .services-intro, etc. */
+
+/* Global Layout */
+main {
+    margin-top: 40px;
+}
+
+.section-container {
+    width: 90%;
+    margin: 0 auto;
+}
 
 @media (min-width: 800px) {
-    .nav-links { 
-        flex-direction: row; 
-        max-height: none; 
-        align-items: center;
-        padding: 0 2rem 0.6rem;
-        margin-bottom: 0;
-    }
-    .menu-btn { 
-        display: none; 
+    header {
+        .nav-links {
+            flex-direction: row;
+            max-height: none;
+            align-items: center;
+            padding: 0 2rem 0.6rem;
+            margin-bottom: 0;
+        }
+
+        .menu-btn {
+            display: none;
+        }
     }
 
-    .footer-content {
-        flex-wrap: nowrap;
+    footer {
+        .footer-content {
+            flex-wrap: nowrap;
+        }
     }
 }

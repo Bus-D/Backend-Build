@@ -1,0 +1,240 @@
+.dashboard-shell {
+    width: min(1180px, 94%);
+    margin: 2rem auto 4rem;
+}
+
+.dashboard-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-head h1 {
+    margin-bottom: 0.2rem;
+}
+
+.dashboard-toolbar {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.9rem;
+    margin-bottom: 1.4rem;
+}
+
+.stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.stat-label {
+    color: var(--muted-text);
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    font-size: 1.65rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+}
+
+.dashboard-panel {
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 1rem;
+}
+
+.dashboard-panel h2 {
+    margin-bottom: 0.8rem;
+}
+
+.project-overview-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.project-overview-table th,
+.project-overview-table td {
+    padding: 0.65rem 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+    vertical-align: middle;
+}
+
+.project-overview-table th {
+    font-size: 0.9rem;
+    color: var(--muted-text);
+    font-weight: 600;
+}
+
+.project-overview-table td a {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.dashboard-cards {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.9rem;
+}
+
+.dashboard-card {
+    background: #f5f9f7;
+    border: 1px solid #dce7e1;
+    border-radius: 12px;
+    padding: 0.95rem;
+}
+
+.dashboard-card h3 {
+    margin-bottom: 0.4rem;
+}
+
+.dashboard-card .meta {
+    color: var(--muted-text);
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
+}
+
+.progress-container {
+    width: 100%;
+    height: 10px;
+    background: #d9e2dc;
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+}
+
+.progress-fill {
+    width: var(--progress, 0%);
+    height: 100%;
+    background: linear-gradient(90deg, #1e8f68 0%, #55b98a 100%);
+    border-radius: 999px;
+}
+
+.dashboard-modal[hidden] {
+    display: none;
+}
+
+.dashboard-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1500;
+}
+
+.dashboard-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(11, 21, 17, 0.65);
+}
+
+.dashboard-modal-panel {
+    position: relative;
+    width: min(720px, 92%);
+    max-height: 88vh;
+    overflow: auto;
+    margin: 4.5vh auto;
+    background: var(--surface);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    padding: 1.2rem;
+}
+
+.dashboard-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+}
+
+.modal-close {
+    border: 1px solid var(--border-color);
+    background: transparent;
+    color: var(--text-color);
+    border-radius: 8px;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+.dashboard-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+}
+
+.form-group {
+    display: grid;
+    gap: 0.4rem;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.65rem 0.7rem;
+    font: inherit;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.case-study-fields {
+    margin-top: 0.2rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.actions-row {
+    display: flex;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+}
+
+.empty-state {
+    padding: 1.3rem;
+    border: 1px dashed var(--border-color);
+    border-radius: 12px;
+    text-align: center;
+    color: var(--muted-text);
+}
+
+@media (max-width: 980px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .dashboard-form-grid {
+        grid-template-columns: 1fr;
+    }
+}

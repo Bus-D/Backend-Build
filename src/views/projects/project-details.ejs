@@ -1,0 +1,54 @@
+<%- include('../partials/header') %>
+
+<main class="section-container dashboard-shell">
+    <section class="dashboard-head">
+        <div>
+            <h1><%= project.name %></h1>
+            <p class="muted"><%= project.status %> project</p>
+        </div>
+        <div class="dashboard-toolbar">
+            <a href="/admin/dashboard" class="btn">Back to Dashboard</a>
+            <% if (hasCaseStudy) { %>
+                <a href="/projects/case-study/<%= caseStudySlug %>" class="order-button">Open Case Study</a>
+            <% } %>
+        </div>
+    </section>
+
+    <section class="dashboard-panel">
+        <h2>Project Summary</h2>
+        <p><%= project.description || 'No project description available yet.' %></p>
+        <p class="muted">Deadline: <%= project.deadline ? new Date(project.deadline).toLocaleDateString() : 'Not set' %></p>
+        <div class="progress-container" style="--progress: <%= Math.max(0, Math.min(100, Number(project.progressPercentage) || 0)) %>%">
+            <div class="progress-fill"></div>
+        </div>
+        <p class="muted">Completion: <%= Math.max(0, Math.min(100, Number(project.progressPercentage) || 0)) %>%</p>
+    </section>
+
+    <section class="dashboard-panel">
+        <h2>Assigned Users</h2>
+        <% if (users.length > 0) { %>
+            <table class="project-overview-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Permission</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(person => { %>
+                        <tr>
+                            <td><%= person.name %></td>
+                            <td><%= person.role %></td>
+                            <td><%= person.permissions %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="muted">No users are assigned to this project yet.</p>
+        <% } %>
+    </section>
+</main>
+
+<%- include('../partials/footer') %>

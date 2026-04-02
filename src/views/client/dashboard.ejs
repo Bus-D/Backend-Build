@@ -1,47 +1,54 @@
 <%- include('../partials/header') %>
 
-<main class="section-container">
-        <section class="hero">
+<main class="dashboard-shell">
+    <section class="dashboard-head">
+        <div>
             <h1>Client Dashboard</h1>
-            <h2>Welcome back, <%= user.name %></h2>
-        </section>
-
-        <div class="home-intro">
-            <h3>Your Project Overview</h3>
-            <p class="muted">Track the progress of your active design projects and view recent updates.</p>
+            <p class="muted">Welcome back, <%= user.name %>. Track progress, status updates, and deadlines.</p>
         </div>
+    </section>
 
-        <section class="home-grid">
-            <% if (projects.length > 0) { %>
-                <% projects.forEach(project => { %>
-                    <section class="card-item">
+    <section class="dashboard-stats">
+        <article class="stat-card">
+            <p class="stat-label">Active Projects</p>
+            <p class="stat-value"><%= overview.activeProjects %></p>
+        </article>
+        <article class="stat-card">
+            <p class="stat-label">Total Projects</p>
+            <p class="stat-value"><%= overview.totalProjects %></p>
+        </article>
+        <article class="stat-card">
+            <p class="stat-label">Average Completion</p>
+            <p class="stat-value"><%= overview.avgProgress %>%</p>
+        </article>
+    </section>
+
+    <section class="dashboard-panel">
+        <h2>Your Project Overview</h2>
+        <% if (projects.length > 0) { %>
+            <div class="dashboard-cards">
+                <% projects.forEach(project => { 
+                    const progress = Math.max(0, Math.min(100, Number(project.progress) || 0));
+                %>
+                    <article class="dashboard-card">
                         <h3><%= project.name %></h3>
-                        <p>Status: <strong><%= project.status %></strong></p>
-                        
-                        <% 
-                            let rawProgress = Number(project.progress);
-                            if (Number.isNaN(rawProgress)) {
-                                rawProgress = 0;
-                            }
-                            const progress = Math.max(0, Math.min(100, rawProgress));
-                        %>
-                        <div class="progress-container" style="--progress: <%= progress.progress || 0 %>">
+                        <p class="meta">Status: <%= project.status %></p>
+                        <p class="meta">Deadline: <%= project.deadline ? new Date(project.deadline).toLocaleDateString() : 'Not set' %></p>
+                        <div class="progress-container" style="--progress: <%= progress %>%">
                             <div class="progress-fill"></div>
                         </div>
-                        <p class="muted">Completion: <%= progress %>%</p>
-                        
-                        <div class="form-footer">
-                            <a href="/projects/<%= project.id %>" class="order-button">View Project details</a>
-                        </div>
-                    </section>
+                        <p class="meta">Completion: <%= progress %>%</p>
+                        <a href="/projects/<%= project.id %>" class="order-button">View Project Details</a>
+                    </article>
                 <% }) %>
-            <% } else { %>
-                <div class="card-item" style="grid-column: 1 / -1; padding: 2rem; text-align: center;">
-                    <p>No active projects found.</p>
-                    <a href="/contact" class="btn">Start a New Project</a>
-                </div>
-            <% } %>
-        </section>
-    </main>
+            </div>
+        <% } else { %>
+            <div class="empty-state">
+                <p>No active projects found.</p>
+                <a href="/contact" class="btn">Start a New Project</a>
+            </div>
+        <% } %>
+    </section>
+</main>
 
 <%- include('../partials/footer') %>

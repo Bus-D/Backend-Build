@@ -1,47 +1,205 @@
 <%- include('../partials/header') %>
 
-<main class="section-container">
-        <section class="hero">
+<main class="dashboard-shell">
+    <section class="dashboard-head">
+        <div>
             <h1>Admin Dashboard</h1>
-            <h2>Welcome back, <%= user.name %></h2>
-        </section>
-
-        <div class="home-intro">
-            <h3>Overview</h3>
-            <p class="muted">Manage your active projects and client base from this central hub.</p>
+            <p class="muted">Welcome back, <%= user.name %>. Build, track, and publish project work from one place.</p>
         </div>
-
-        <section class="home-grid">
-            <div class="home-intro" style="grid-column: 1 / -1; margin-bottom: 0;">
-                <h3>Recent Projects</h3>
-            </div>
-            <% projects.forEach(project => { %>
-                <section class="card-item">
-                    <h3><%= project.name %></h3>
-                    <p>Status: <strong><%= project.status %></strong></p>
-                    <p class="muted">Progress: <%= project.progress %>%</p>
-                    <a href="/projects/<%= project.id %>" class="order-button">View Details</a>
-                </section>
-            <% }) %>
-        </section>
-
-        <section class="home-grid">
-            <div class="home-intro" style="grid-column: 1 / -1; margin-bottom: 0;">
-                <h3>Recent Clients</h3>
-            </div>
-            <% clients.forEach(client => { %>
-                <section class="card-item">
-                    <h3><%= client.name %></h3>
-                    <p class="muted">Role: <%= client.role %></p>
-                    <a href="/admin/users/<%= client.id %>" class="order-button">Manage User</a>
-                </section>
-            <% }) %>
-        </section>
-
-        <div class="form-footer">
-            <a href="/projects" class="btn">View All Projects</a>
-            <a href="/admin/users" class="btn">View All Clients</a>
+        <div class="dashboard-toolbar">
+            <button type="button" class="btn" data-open-project-modal>Add Project</button>
+            <button type="button" class="btn" data-open-case-study-modal>Add Case Study</button>
+            <a href="/admin/users" class="order-button">Manage Clients</a>
         </div>
-    </main>
+    </section>
+
+    <section class="dashboard-stats">
+        <article class="stat-card">
+            <p class="stat-label">Total Projects</p>
+            <p class="stat-value"><%= overview.totalProjects %></p>
+        </article>
+        <article class="stat-card">
+            <p class="stat-label">Active Projects</p>
+            <p class="stat-value"><%= overview.activeProjects %></p>
+        </article>
+        <article class="stat-card">
+            <p class="stat-label">Archived Projects</p>
+            <p class="stat-value"><%= overview.archivedProjects %></p>
+        </article>
+        <article class="stat-card">
+            <p class="stat-label">Average Completion</p>
+            <p class="stat-value"><%= overview.avgProgress %>%</p>
+        </article>
+    </section>
+
+    <section class="dashboard-grid">
+        <article class="dashboard-panel">
+            <h2>Current Project Overview</h2>
+            <% if (projects.length > 0) { %>
+                <table class="project-overview-table">
+                    <thead>
+                        <tr>
+                            <th>Project</th>
+                            <th>Status</th>
+                            <th>Progress</th>
+                            <th>Deadline</th>
+                            <th>Case Study</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% projects.forEach(project => { %>
+                            <tr>
+                                <td><a href="/projects/<%= project.id %>"><%= project.name %></a></td>
+                                <td><%= project.status %></td>
+                                <td><%= Number(project.progress) || 0 %>%</td>
+                                <td><%= project.deadline ? new Date(project.deadline).toLocaleDateString() : 'Not set' %></td>
+                                <td>
+                                    <% if (project.hasCaseStudy) { %>
+                                        <a href="/projects/case-study/<%= project.caseStudySlug %>">Open</a>
+                                    <% } else { %>
+                                        <span class="muted">Not created</span>
+                                    <% } %>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            <% } else { %>
+                <div class="empty-state">No projects yet. Use Add Project to create your first one.</div>
+            <% } %>
+
+            <div class="dashboard-cards">
+                <% projects.slice(0, 4).forEach(project => { 
+                    const progress = Math.max(0, Math.min(100, Number(project.progress) || 0));
+                %>
+                    <article class="dashboard-card">
+                        <h3><%= project.name %></h3>
+                        <p class="meta">Status: <%= project.status %></p>
+                        <div class="progress-container" style="--progress: <%= progress %>%">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <p class="meta">Completion: <%= progress %>%</p>
+                        <a href="/projects/<%= project.id %>" class="order-button">View Project</a>
+                    </article>
+                <% }) %>
+            </div>
+        </article>
+
+        <article class="dashboard-panel">
+            <h2>Recent Clients</h2>
+            <% if (clients.length > 0) { %>
+                <div class="dashboard-cards">
+                    <% clients.forEach(client => { %>
+                        <section class="dashboard-card">
+                            <h3><%= client.name %></h3>
+                            <p class="meta"><%= client.email %></p>
+                            <p class="meta">Role: <%= client.role %></p>
+                        </section>
+                    <% }) %>
+                </div>
+            <% } else { %>
+                <div class="empty-state">No clients found yet.</div>
+            <% } %>
+        </article>
+    </section>
+
+    <section class="dashboard-modal" data-dashboard-modal hidden>
+        <div class="dashboard-modal-backdrop" data-dashboard-modal-backdrop></div>
+        <div class="dashboard-modal-panel">
+            <div class="dashboard-modal-header">
+                <h2>Add Project</h2>
+                <button type="button" class="modal-close" aria-label="Close" data-close-project-modal>x</button>
+            </div>
+
+            <form method="post" action="/admin/projects/create">
+                <div class="dashboard-form-grid">
+                    <div class="form-group">
+                        <label for="project-name">Project Name</label>
+                        <input id="project-name" name="name" type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="project-deadline">Deadline</label>
+                        <input id="project-deadline" name="deadline" type="date">
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="project-description">Project Description</label>
+                        <textarea id="project-description" name="description" placeholder="Outline scope, goals, and key milestones."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="client-id">Assign Client</label>
+                        <select id="client-id" name="clientId">
+                            <option value="">No assignment yet</option>
+                            <% clients.forEach(client => { %>
+                                <option value="<%= client.id %>"><%= client.name %> (<%= client.email %>)</option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="actions-row">
+                    <button type="submit">Create Project</button>
+                    <button type="button" class="btn" data-close-project-modal>Cancel</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="dashboard-modal" data-case-study-modal hidden>
+        <div class="dashboard-modal-backdrop" data-dashboard-modal-backdrop></div>
+        <div class="dashboard-modal-panel">
+            <div class="dashboard-modal-header">
+                <h2>Add Case Study</h2>
+                <button type="button" class="modal-close" aria-label="Close" data-close-case-study-modal>x</button>
+            </div>
+
+            <form method="post" action="/admin/case-studies/create">
+                <div class="dashboard-form-grid">
+                    <div class="form-group full">
+                        <label for="case-study-project-id">Link to Existing Project (Optional)</label>
+                        <select id="case-study-project-id" name="projectId">
+                            <option value="">Use custom project name</option>
+                            <% projects.forEach(project => { %>
+                                <option value="<%= project.id %>"><%= project.name %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="case-study-project-name">Project Name</label>
+                        <input id="case-study-project-name" name="projectName" type="text" placeholder="Required if no project is selected">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="case-study-slug">Case Study URL Slug</label>
+                        <input id="case-study-slug" name="caseStudySlug" type="text" placeholder="my-project-case-study">
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="case-study-title">Case Study Page Title</label>
+                        <input id="case-study-title" name="caseStudyTitle" type="text" placeholder="Project Name Case Study">
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="case-study-summary">Case Study Summary</label>
+                        <textarea id="case-study-summary" name="caseStudySummary" required placeholder="High-level introduction for the case study page."></textarea>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="case-study-content">Case Study Content</label>
+                        <textarea id="case-study-content" name="caseStudyContent" placeholder="Write your process, decisions, outcomes, and lessons learned."></textarea>
+                    </div>
+                </div>
+
+                <div class="actions-row">
+                    <button type="submit">Create Case Study</button>
+                    <button type="button" class="btn" data-close-case-study-modal>Cancel</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
 
 <%- include('../partials/footer') %>

@@ -103,7 +103,7 @@ const deleteUser = async (id) => {
 
 const getAllUsers = async () => {
     const query = `
-        SELECT id, name, email, created_at
+        SELECT id, name, email, role, created_at
         FROM users
         ORDER BY name
         `;
